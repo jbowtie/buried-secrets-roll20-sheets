@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+
+.sheet-main {
+  display: grid;
+  width: 800px;
+  grid-gap: 4px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas:"header  header  header  header header header"
+                      "ins   ins prw  prw  res res"
+                      "power power power power power power"
+                      "misc misc misc misc misc misc"
+                      "footer  footer  footer  footer footer footer";
+}
+
+/*----------------- GENERAL CSS ------------------*/
+
+textarea {
+  width: 90%;
+  height: 85%;
+}
+label.sheet-lbl {
+    display: inline-block;
+}
+.sheet-section {
+    padding: 5px;
+    border-style: solid;
+}
+
+.sheet-flex-col {
+  display: flex;
+  flex-flow: row wrap;
+  /*justify-content: flex-start;*/
+}
+
+.sheet-flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
+/*------------- Section-specific CSS -------------*/
+
+.sheet-header {
+  grid-area: header;
+  flex-direction: column;
+}
+
+.sheet-skill {
+  grid-area: skill;
+}
+.sheet-insight {
+  grid-area: ins;
+}
+.sheet-prowess {
+  grid-area: prw;
+}
+.sheet-resolve {
+  grid-area: res;
+}
+
+.sheet-common {
+  grid-area: common;
+}
+
+.sheet-power {
+  grid-area: power;
+}
+
+.sheet-attack {
+  grid-area: attack;
+}
+
+.sheet-inv {
+  grid-area: inv;
+}
+
+.sheet-misc {
+  grid-area: misc;
+}
+
+.sheet-footer {
+  grid-area: footer;
+  background-color: gray;
+}
+
+.sheet-misc textarea {
+    width: 98%;
+    height: auto;
+}
+/*-- roll buttons? --*/
+.sheet-main label > button[type=roll]::before {
+	content: " " !important;
+}
+.sheet-main label > button[type=roll] {
+	background-color: transparent;
+	border: none;
+	font-size: 1.1em;
+	line-height: 1.2;
+	background-image: none;
+	text-shadow: none;
+	box-shadow: none;
+	font-weight: bold;
+}
+
+.sheet-main label > button[type=roll]:hover {
+	color: #EC2127;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
+}
+
+.sheet-main input[type=number] {
+	-moz-appearance: textfield;
+}
+/*-- roll template --*/
+.sheet-rolltemplate-action {
+    border: 1px solid black;
+    background-color:white;
+    padding: 0.5em;
+}
+.sheet-rolltemplate-action h1 {
+    font-size: 130%;
+    line-height: 1em;
+}
+.sheet-rolltemplate-action h2 {
+    font-size: 120%;
+    border-bottom: 1px solid black;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-variant: small-caps;
+}
+.sheet-rolltemplate-action .sheet-center {
+    text-align:center;
+}
+.sheet-rolltemplate-action .inlinerollresult {
+    border: none;
+    background-color: transparent;
+    font-family: 'Fredoka One';
+    font-size: 2em;
+    font-weight: normal;
+}
+.sheet-rolltemplate-action em .inlinerollresult {
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.sheet-rolltemplate-action .inlinerollresult.fullcrit {
+    color: #3FB315;
+    border: none;
+}
+ 
+.sheet-rolltemplate-action .inlinerollresult.fullfail {
+    border: none;
+}
+
+.sheet-rolltemplate-resist {
+    border: 1px solid black;
+    background-color:white;
+    padding: 0.5em;
+}
+.sheet-rolltemplate-resist h1 {
+    font-size: 130%;
+    line-height: 1em;
+}
+.sheet-rolltemplate-resist h2 {
+    font-size: 120%;
+    border-bottom: 1px solid black;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-variant: small-caps;
+}
+.sheet-rolltemplate-resist .sheet-center {
+    text-align:center;
+}
+.sheet-rolltemplate-resist .inlinerollresult {
+    border: none;
+    background-color: transparent;
+    font-family: 'Fredoka One';
+    font-size: 2em;
+    font-weight: normal;
+}
+.sheet-rolltemplate-resist em .inlinerollresult {
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.sheet-rolltemplate-resist .inlinerollresult.fullcrit {
+    color: #3FB315;
+    border: none;
+}
+ 
+.sheet-rolltemplate-resist .inlinerollresult.fullfail {
+    border: none;
+}
