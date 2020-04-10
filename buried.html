@@ -1,12 +1,22 @@
-<div class="main">
+<input type="hidden" name="attr_version" value="1.01" />
+<input type="hidden" name="attr_sheet_type" value="agent" />
+<div class="main agent">
     <div class="header flex-center section">
         <h1><input name="attr_class" type="text" /></h1>
-        <p>Name: <input name="attr_character_name" type="text" /></p>
+        <p>Name: <input name="attr_character_name" type="text" spellcheck="false"  /></p>
         <label>Stress: <input type="number" name="attr_stress" value="0"/></label>
     </div>
     <div class="insight section">
         <input type="hidden" name="attr_insight" value="0" />
-        <h3>Insight <button type="roll" title="Resist deception" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Insight}} {{attr_num=[[@{insight}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{insight})d6kh1]]}}"></button></h3>
+        <h3>Insight <button type="roll" title="Resist deception" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Insight}} {{attr_num=[[@{insight}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{insight})d6kh1]]}}"></button><span class="xp" title="Insight XP"> 
+                <input type="radio" name="attr_xp_insight" value="6" />
+                <input type="radio" name="attr_xp_insight" value="5" />
+                <input type="radio" name="attr_xp_insight" value="4" />
+                <input type="radio" name="attr_xp_insight" value="3" />
+                <input type="radio" name="attr_xp_insight" value="2" />
+                <input type="radio" name="attr_xp_insight" value="1" />
+            </span></h3>
+            <label class="xp-clear"><input type="radio" name="attr_xp_insight" value="0"/>Clear XP</label>
         <label class="lbl"><input type="number" name="attr_hunt" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Hunt}} {{attr_num=[[@{hunt}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{hunt}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Hunt</button></label>
         <label class="lbl"><input type="number" name="attr_study" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Study}} {{attr_num=[[@{study}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{study}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Study</button></label>
         <label class="lbl"><input type="number" name="attr_survey" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Survey}} {{attr_num=[[@{survey}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{survey}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Survey</button></label>
@@ -14,7 +24,15 @@
     </div>
     <div class="prowess section">
         <input type="hidden" name="attr_prowess" value="0" />
-        <h3>Prowess<button type="roll" title="Resist physical damage" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Prowess}} {{attr_num=[[@{prowess}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{prowess})d6kh1]]}}"></button></h3>
+        <h3>Prowess<button type="roll" title="Resist physical damage" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Prowess}} {{attr_num=[[@{prowess}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{prowess})d6kh1]]}}"></button><span class="xp" title="Prowess XP"> 
+                <input type="radio" name="attr_xp_prowess" value="6" />
+                <input type="radio" name="attr_xp_prowess" value="5" />
+                <input type="radio" name="attr_xp_prowess" value="4" />
+                <input type="radio" name="attr_xp_prowess" value="3" />
+                <input type="radio" name="attr_xp_prowess" value="2" />
+                <input type="radio" name="attr_xp_prowess" value="1" />
+            </span></h3>
+            <label class="xp-clear"><input type="radio" name="attr_xp_prowess" value="0"/>Clear XP</label>
         <label class="lbl"><input type="number" name="attr_finesse" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Finesse}} {{attr_num=[[@{finesse}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{finesse}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Finesse</button></label>
         <label class="lbl"><input type="number" name="attr_prowl" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Prowl}} {{attr_num=[[@{prowl}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{prowl}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Prowl</button></label>
         <label class="lbl"><input type="number" name="attr_skirmish" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Skirmish}} {{attr_num=[[@{skirmish}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{skirmish}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Skirmish</button></label>
@@ -22,14 +40,32 @@
     </div>
     <div class="resolve section">
         <input type="hidden" name="attr_resolve" value="0" />
-        <h3>Resolve<button type="roll" title="Resist mental strain" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Resolve}} {{attr_num=[[@{resolve}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{resolve})d6kh1]]}}"></button></h3>
+        <h3>Resolve<button type="roll" title="Resist mental strain" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Resolve}} {{attr_num=[[@{resolve}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{resolve})d6kh1]]}}"></button><span class="xp" title="Resolve XP"> 
+                <input type="radio" name="attr_xp_resolve" value="6" />
+                <input type="radio" name="attr_xp_resolve" value="5" />
+                <input type="radio" name="attr_xp_resolve" value="4" />
+                <input type="radio" name="attr_xp_resolve" value="3" />
+                <input type="radio" name="attr_xp_resolve" value="2" />
+                <input type="radio" name="attr_xp_resolve" value="1" />
+            </span></h3>
+            <label class="xp-clear"><input type="radio" name="attr_xp_resolve" value="0"/>Clear XP</label>
         <label class="lbl"><input type="number" name="attr_attune" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Attune}} {{attr_num=[[@{attune}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{attune}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Attune</button></label>
         <label class="lbl"><input type="number" name="attr_command" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Command}} {{attr_num=[[@{command}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{command}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Command</button></label>
         <label class="lbl"><input type="number" name="attr_consort" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Consort}} {{attr_num=[[@{consort}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{consort}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Consort</button></label>
         <label class="lbl"><input type="number" name="attr_sway" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Sway}} {{attr_num=[[@{sway}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{sway}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Sway</button></label>
     </div>
-    <div class="power section flex-col">
-      <label>Special Abilities</label>
+    <div class="power section">
+        <h3>Special Abilities<span class="xp" title="Playbook XP"> 
+                <input type="radio" name="attr_xp_power" value="8" />
+                <input type="radio" name="attr_xp_power" value="7" />
+                <input type="radio" name="attr_xp_power" value="6" />
+                <input type="radio" name="attr_xp_power" value="5" />
+                <input type="radio" name="attr_xp_power" value="4" />
+                <input type="radio" name="attr_xp_power" value="3" />
+                <input type="radio" name="attr_xp_power" value="2" />
+                <input type="radio" name="attr_xp_power" value="1" />
+            </span></h3>
+            <label class="xp-clear"><input type="radio" name="attr_xp_power" value="0"/>Clear XP</label>
       <fieldset class="repeating_power">
           <textarea name="attr_power" type="text"></textarea>
       </fieldset>

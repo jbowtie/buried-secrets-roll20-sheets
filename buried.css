@@ -24,6 +24,9 @@ label.sheet-lbl {
 .sheet-section {
     padding: 5px;
     border-style: solid;
+    border-color: #888;
+    border-radius: 5px;
+    position: relative;
 }
 
 .sheet-flex-col {
@@ -115,7 +118,67 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-main input[type=number] {
 	-moz-appearance: textfield;
 }
-/*-- roll template --*/
+
+.sheet-power h3 {
+    width: 100%;
+    margin-bottom: 1.5em;
+}
+.sheet-section .sheet-xp {
+    position:absolute;
+    right: 5px;
+    top: 5px;
+    display:flex;
+    flex-direction:row-reverse;
+}
+
+.sheet-xp input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+	margin-left: 5px;
+  border-radius: 20%;
+  width: 16px;
+  height: 16px;
+  border-color: #222;
+}
+
+.sheet-xp input:checked,
+.sheet-xp input:checked ~ input[type=radio] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 20%;
+  width: 16px;
+  height: 16px;
+  border-color: #222;
+  background-color: #222;
+}
+.sheet-xp-clear {
+    border: 1px solid black;
+    width: auto;
+    position: absolute;
+    right: 5px;
+    top: 2em;
+    padding: 0.25em 0.25em 0;
+    border-radius: 3px;
+    margin-bottom: none;
+    font-size: 1em;
+}
+.sheet-xp-clear input {
+    display:none;
+}
+/*
+label.sheet-xp {
+    display:inline;
+    padding-right:0;
+}
+label.sheet-xp::after {
+    content: '\f02e';
+    color: red;
+}*/
+
+/*-- roll template: action --*/
 .sheet-rolltemplate-action {
     border: 1px solid black;
     background-color:white;
@@ -156,7 +219,7 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-rolltemplate-action .inlinerollresult.fullfail {
     border: none;
 }
-
+/*-- roll template: resist --*/
 .sheet-rolltemplate-resist {
     border: 1px solid black;
     background-color:white;
