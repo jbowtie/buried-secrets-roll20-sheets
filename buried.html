@@ -1,14 +1,99 @@
-<input type="hidden" name="attr_version" value="1.01" />
-<input type="hidden" name="attr_sheet_type" value="agent" />
+<input type="hidden" name="attr_version" value="1.04" />
+<input type="hidden" name="attr_sheet_type" value="choose" />
+<input type="hidden" name="attr_stress_max" value="8" />
+<div class="choose">
+    <h1>Type of sheet:</h1>
+    <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="agent"/>Agent (Character)</label>
+    <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="crew"/>Crew Sheet (1 per game)</label>
+    <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="role"/>Agency Role</label>
+</div>
+<div class="main crew">
+    <div class="header flex-center section">
+        <h1>Playbook: <input name="attr_class" type="text" /></h1>
+        <p>Name: <input name="attr_character_name" type="text" spellcheck="false"  /></p>
+        <p><label>Intel: <input type="number" name="attr_crew_intel" value="0"/></label></p>
+        <p><label>Available upgrades: <input type="number" name="attr_crew_upgrades" value="2"/></label></p>
+    </div>
+    <div class="hqup section">
+        <h3>HQ Upgrades</h3>
+        <label><input type="checkbox" name="attr_hq_air_1" value="1" /> Aircraft 1</label>
+        <label><input type="checkbox" name="attr_hq_air_2" value="1" /> Aircraft 2</label>
+        <label><input type="checkbox" name="attr_hq_hidden" value="1" /> Hidden</label>
+        <label><input type="checkbox" name="attr_hq_living" value="1" /> Quarters</label>
+        <label><input type="checkbox" name="attr_hq_safehouse_1" value="1" /> Safehouse 1</label>
+        <label><input type="checkbox" name="attr_hq_safehouse_2" value="1" /> Safehouse 2</label>
+        <label><input type="checkbox" name="attr_hq_vault_1" value="1" /> Vault 1</label>
+        <label><input type="checkbox" name="attr_hq_vault_2" value="1" /> Vault 2</label>
+        <label><input type="checkbox" name="attr_hq_workshop" value="1" /> Workshop</label>
+    </div>
+    <div class="qup section">
+        <h3>Quality Upgrades</h3>
+        <label><input type="checkbox" name="attr_qu_doc" value="1" /> Documents</label>
+        <label><input type="checkbox" name="attr_qu_gadget" value="1" /> Gadgets</label>
+        <label><input type="checkbox" name="attr_qu_gear" value="1" /> Gear</label>
+        <label><input type="checkbox" name="attr_qu_supplies" value="1" /> Supplies</label>
+        <label><input type="checkbox" name="attr_qu_tools" value="1" /> Tools</label>
+        <label><input type="checkbox" name="attr_qu_weapons" value="1" /> Weapons</label>
+    </div>
+    <div class="crewup section">
+        <h3>Crew Upgrades</h3>
+        <label><input type="checkbox" name="attr_cup_muscle" value="1" /> Muscle</label>
+        <label><input type="checkbox" name="attr_cup_boffins" value="1" /> Elite boffins</label>
+        <label><input type="checkbox" name="attr_cup_watchers" value="1" /> Elite watchers</label>
+        <label><input type="checkbox" name="attr_cup_arcanew" value="1" /> Arcane Workshop</label>
+        <label><input type="checkbox" name="attr_cup_mystic" value="1" /> Mystic Tools <i>(2 free load occult items)</i></label>
+        <label><input type="checkbox" name="attr_cup_ordained" value="1" /> Ordained (+1 trauma) <i>[3 upgrades]</i></label>
+        <h3>Training</h3>
+        <p><i>2xp during downtime training</i></p>
+        <label><input type="checkbox" name="attr_trn_insight" value="1" /> Insight</label>
+        <label><input type="checkbox" name="attr_trn_prowess" value="1" /> Prowess</label>
+        <label><input type="checkbox" name="attr_trn_resolve" value="1" /> Resolve</label>
+        <label><input type="checkbox" name="attr_trn_playbook" value="1" /> Playbook</label>
+        <label><input type="checkbox" name="attr_trn_mastery" value="1" /> Mastery <i>[4 upgrades]</i></label>
+    </div>
+    <div class="power section">
+        <h3>Special Abilities<span class="xp" title="Playbook XP">
+                <input type="radio" name="attr_xp_crew" value="8" />
+                <input type="radio" name="attr_xp_crew" value="7" />
+                <input type="radio" name="attr_xp_crew" value="6" />
+                <input type="radio" name="attr_xp_crew" value="5" />
+                <input type="radio" name="attr_xp_crew" value="4" />
+                <input type="radio" name="attr_xp_crew" value="3" />
+                <input type="radio" name="attr_xp_crew" value="2" />
+                <input type="radio" name="attr_xp_crew" value="1" />
+            </span></h3>
+            <label class="xp-clear"><input type="radio" name="attr_xp_crew" value="0" checked="true" />Clear XP</label>
+      <fieldset class="repeating_power">
+          <textarea name="attr_power" type="text"></textarea>
+      </fieldset>
+    </div>
+    <div class="misc section">
+      <label>Notes</label>
+      <textarea name="attr_notes"></textarea>
+    </div>
+</div>
+<div class="role">
+    <h1>Role</h1>
+</div>
 <div class="main agent">
     <div class="header flex-center section">
-        <h1><input name="attr_class" type="text" /></h1>
+        <h1>Playbook: <input name="attr_class" type="text" /></h1>
         <p>Name: <input name="attr_character_name" type="text" spellcheck="false"  /></p>
-        <label>Stress: <input type="number" name="attr_stress" value="0"/></label>
+        <span class="xp stress">
+                <input type="radio" name="attr_stress" value="8" />
+                <input type="radio" name="attr_stress" value="7" />
+                <input type="radio" name="attr_stress" value="6" />
+                <input type="radio" name="attr_stress" value="5" />
+                <input type="radio" name="attr_stress" value="4" />
+                <input type="radio" name="attr_stress" value="3" />
+                <input type="radio" name="attr_stress" value="2" />
+                <input type="radio" name="attr_stress" value="1" />
+        </span>
+        <label class="xp-clear"><input type="radio" name="attr_stress" value="0" checked="true" />Clear Stress</label>
     </div>
     <div class="insight section">
         <input type="hidden" name="attr_insight" value="0" />
-        <h3>Insight <button type="roll" title="Resist deception" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Insight}} {{attr_num=[[@{insight}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{insight})d6kh1]]}}"></button><span class="xp" title="Insight XP"> 
+        <h3>Insight <button type="roll" title="Resist deception" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Insight}} {{attr_num=[[@{insight}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{insight})d6kh1]]}}"></button><span class="xp" title="Insight XP">
                 <input type="radio" name="attr_xp_insight" value="6" />
                 <input type="radio" name="attr_xp_insight" value="5" />
                 <input type="radio" name="attr_xp_insight" value="4" />
@@ -16,7 +101,7 @@
                 <input type="radio" name="attr_xp_insight" value="2" />
                 <input type="radio" name="attr_xp_insight" value="1" />
             </span></h3>
-            <label class="xp-clear"><input type="radio" name="attr_xp_insight" value="0"/>Clear XP</label>
+            <label class="xp-clear"><input type="radio" name="attr_xp_insight" value="0" checked="true" />Clear XP</label>
         <label class="lbl"><input type="number" name="attr_hunt" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Hunt}} {{attr_num=[[@{hunt}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{hunt}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Hunt</button></label>
         <label class="lbl"><input type="number" name="attr_study" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Study}} {{attr_num=[[@{study}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{study}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Study</button></label>
         <label class="lbl"><input type="number" name="attr_survey" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Survey}} {{attr_num=[[@{survey}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{survey}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Survey</button></label>
@@ -24,7 +109,7 @@
     </div>
     <div class="prowess section">
         <input type="hidden" name="attr_prowess" value="0" />
-        <h3>Prowess<button type="roll" title="Resist physical damage" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Prowess}} {{attr_num=[[@{prowess}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{prowess})d6kh1]]}}"></button><span class="xp" title="Prowess XP"> 
+        <h3>Prowess<button type="roll" title="Resist physical damage" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Prowess}} {{attr_num=[[@{prowess}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{prowess})d6kh1]]}}"></button><span class="xp" title="Prowess XP">
                 <input type="radio" name="attr_xp_prowess" value="6" />
                 <input type="radio" name="attr_xp_prowess" value="5" />
                 <input type="radio" name="attr_xp_prowess" value="4" />
@@ -32,7 +117,7 @@
                 <input type="radio" name="attr_xp_prowess" value="2" />
                 <input type="radio" name="attr_xp_prowess" value="1" />
             </span></h3>
-            <label class="xp-clear"><input type="radio" name="attr_xp_prowess" value="0"/>Clear XP</label>
+            <label class="xp-clear"><input type="radio" name="attr_xp_prowess" value="0" checked="true" />Clear XP</label>
         <label class="lbl"><input type="number" name="attr_finesse" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Finesse}} {{attr_num=[[@{finesse}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{finesse}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Finesse</button></label>
         <label class="lbl"><input type="number" name="attr_prowl" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Prowl}} {{attr_num=[[@{prowl}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{prowl}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Prowl</button></label>
         <label class="lbl"><input type="number" name="attr_skirmish" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Skirmish}} {{attr_num=[[@{skirmish}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{skirmish}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Skirmish</button></label>
@@ -40,7 +125,7 @@
     </div>
     <div class="resolve section">
         <input type="hidden" name="attr_resolve" value="0" />
-        <h3>Resolve<button type="roll" title="Resist mental strain" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Resolve}} {{attr_num=[[@{resolve}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{resolve})d6kh1]]}}"></button><span class="xp" title="Resolve XP"> 
+        <h3>Resolve<button type="roll" title="Resist mental strain" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Resolve}} {{attr_num=[[@{resolve}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{resolve})d6kh1]]}}"></button><span class="xp" title="Resolve XP">
                 <input type="radio" name="attr_xp_resolve" value="6" />
                 <input type="radio" name="attr_xp_resolve" value="5" />
                 <input type="radio" name="attr_xp_resolve" value="4" />
@@ -48,14 +133,15 @@
                 <input type="radio" name="attr_xp_resolve" value="2" />
                 <input type="radio" name="attr_xp_resolve" value="1" />
             </span></h3>
-            <label class="xp-clear"><input type="radio" name="attr_xp_resolve" value="0"/>Clear XP</label>
+            <label class="xp-clear"><input type="radio" name="attr_xp_resolve" value="0" checked="true" />Clear XP</label>
         <label class="lbl"><input type="number" name="attr_attune" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Attune}} {{attr_num=[[@{attune}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{attune}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Attune</button></label>
         <label class="lbl"><input type="number" name="attr_command" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Command}} {{attr_num=[[@{command}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{command}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Command</button></label>
         <label class="lbl"><input type="number" name="attr_consort" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Consort}} {{attr_num=[[@{consort}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{consort}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Consort</button></label>
         <label class="lbl"><input type="number" name="attr_sway" value="0" /> <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Sway}} {{attr_num=[[@{sway}+?{Bonus Dice|0|1|2|3|-1|-2|-3}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(@{sway}+?{Bonus Dice|0|1|2|3|-1|-2|-3})d6kh1]]}}">Sway</button></label>
     </div>
     <div class="power section">
-        <h3>Special Abilities<span class="xp" title="Playbook XP"> 
+        <input name="attr_class_power" type="hidden" value="@{class}" disabled="true" />
+        <h3>Special Abilities<span class="xp" title="Playbook XP">
                 <input type="radio" name="attr_xp_power" value="8" />
                 <input type="radio" name="attr_xp_power" value="7" />
                 <input type="radio" name="attr_xp_power" value="6" />
@@ -65,11 +151,237 @@
                 <input type="radio" name="attr_xp_power" value="2" />
                 <input type="radio" name="attr_xp_power" value="1" />
             </span></h3>
-            <label class="xp-clear"><input type="radio" name="attr_xp_power" value="0"/>Clear XP</label>
+            <label class="xp-clear"><input type="radio" name="attr_xp_power" value="0" checked="true" />Clear XP</label>
+    <ul class="controller">
+        <li> <label><input type="checkbox" name="attr_power_c1" value="1" /> Foresight</label> &mdash; Twice per mission you can assist a teammate without paying stress. Tell us how you prepared for it.</li>
+        <li> <label><input type="checkbox" name="attr_power_c2" value="1" /> Connected</label> &mdash; During downtime you get +1 result level when you acquire an asset or reduce heat.</li>
+        <li> <label><input type="checkbox" name="attr_power_c3" value="1" /> Time Manager</label> &mdash; Due to careful planning during downtime, you may give yourself or a teammate +1 downtime action.</li>
+        <li> <label><input type="checkbox" name="attr_power_c4" value="1" /> Mastermind</label> &mdash; You may use your special armor to protect a teammate, or push yourself when you gather info or work on a long-term project.</li>
+        <li> <label><input type="checkbox" name="attr_power_c5" value="1" /> Weaving the Web</label> &mdash; you gain +1d to Consort when you gather info on the target of a mission. You get +1d on the engagement for the mission.</li>
+        <li> <label><input type="checkbox" name="attr_power_c6" value="1" /> Head of the Snake</label> &mdash; When you lead a group action, you only mark stress for PCs that rolled a 1 or 2 as their result. You may adjust the entanglement roll by 1 (up or down).</li>
+        <li> <label><input type="checkbox" name="attr_power_c7" value="1" /> Like Looking into a Mirror</label> &mdash; You can always tell when someone is lying to you.</li>
+</ul>
+    <ul class="adept">
+        <li> <label><input type="checkbox" name="attr_power_a1" value="1" /> Arcane Mind</label> &mdash; Twice per mission you can assist a teammate without paying stress. Tell us how you prepared for it.</li>
+        <li> <label><input type="checkbox" name="attr_power_a2" value="1" /> Warded</label> &mdash; During downtime you get +1 result level when you acquire an asset or reduce heat.</li>
+        <li> <label><input type="checkbox" name="attr_power_a3" value="1" /> Iron Will</label> &mdash; You are immune to the terror that some supernatural entities inflict on sight. When you make a resistance roll with Resolve, take +1d.</li>
+        <li> <label><input type="checkbox" name="attr_power_a4" value="1" /> Mesmerism</label> &mdash; When you Sway someone, you may cause them to forget that it’s happened until they next interact with you.</li>
+        <li> <label><input type="checkbox" name="attr_power_a5" value="1" /> Spellcaster</label> &mdash; You get +1 result level when you work on a long term project to learn a spell. You begin with two spells already known.</li>
+        <li> <label><input type="checkbox" name="attr_power_a6" value="1" /> Enchanter</label> &mdash; When you invent or craft a creation with arcane features, you get +1 effect level. You begin with one arcane design already known.</li>
+        <li> <label><input type="checkbox" name="attr_power_a7" value="1" /> Tempest</label> &mdash; You can push yourself to do one of the following: unleash a stroke of lightning as a weapon — summon a storm in your immediate vicinity</li>
+</ul>
+<ul class="eng">
+        <li><label><input type="checkbox" name="attr_power_e1" value="1" />  Electrician</label> &mdash; When you invent or craft a creation with electrical features, take +1 effect level to your roll (a 1-3 beciomes a 4-5, etc). You begin with one design already known.</li>
+        <li><label><input type="checkbox" name="attr_power_e2" value="1" />  Devil’s Footsteps</label> &mdash; You can push yourself to do one of the following: <i>perform a feat of athletics that verges on the superhuman—maneuver to confuse your enemies so they mistakenly attack each other</i>.</li>
+        <li><label><input type="checkbox" name="attr_power_e3" value="1" />  Jury Rigger</label> &mdash; You don’t incur flashback costs for two gadgets per mission. You get +1d when you roll to resist consequences of improvised gadgets.</li>
+        <li><label><input type="checkbox" name="attr_power_e4" value="1" />  Saboteur</label> &mdash; When you Wreck, your work is much quieter than it should be and the damage is very well-hidden from casual inspection.</li>
+        <li><label><input type="checkbox" name="attr_power_e5" value="1" />  Physician</label> &mdash; You can Tinker bones, blood, and bodily fluids to treat wounds, perform surgery, or stabilize the dying. You may Study an ailment or corpse. Everyone in your crew (including you) gets +1d to their healing treatment rolls.</li>
+        <li><label><input type="checkbox" name="attr_power_e6" value="1" />  Fortitude</label> &mdash; You may expend your special armor to resist a consequence of fatigue, weakness, or chemical effects, or to push yourself when working with technical skill or handling chemicals.</li>
+        <li><label><input type="checkbox" name="attr_power_e7" value="1" />  Subterfuge</label> &mdash; You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.</li>
+</ul>
       <fieldset class="repeating_power">
           <textarea name="attr_power" type="text"></textarea>
       </fieldset>
     </div>
+    <div class="inv section">
+        <h3>Load</h3>
+        <label class="btn-choice"><input type="radio" name="attr_load_max" value="3" /><span>3 Light</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_load_max" value="5" /><span>5 Normal</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_load_max" value="6" /><span>6 Heavy</span></label>
+        <ul>
+        <li><label><input type="checkbox" name="attr_item_pistol1" value="1" /> A Pistol</label></li>
+        <li><label><input type="checkbox" name="attr_item_pistol2" value="1" /> A 2nd Pistol</label></li>
+        <li><label><input type="checkbox" name="attr_item_armor" value="2" /> Armor [2 load]</label></li>
+        <li><label><input type="checkbox" name="attr_item_heavy" value="3" /> +Heavy Armor [3 load]</label></li>
+        <li><label><input type="checkbox" name="attr_item_burglary" value="1" /> Burglary Gear</label></li>
+        <li><label><input type="checkbox" name="attr_item_climbing" value="2" /> Climbing Gear [2 load]</label></li>
+        <li><label><input type="checkbox" name="attr_item_arcane" value="1" /> Arcane Implements</label></li>
+        <li><label><input type="checkbox" name="attr_item_documents" value="1" /> Documents</label></li>
+        <li><label><input type="checkbox" name="attr_item_subterfuge" value="1" /> Subterfuge Supplies</label></li>
+        <li><label><input type="checkbox" name="attr_item_demolition" value="2" /> Demolition Tools [2 load]</label></li>
+        <li><label><input type="checkbox" name="attr_item_tinkering" value="1" /> Tinkering Tools</label></li>
+        <li><label><input type="checkbox" name="attr_item_torch" value="1" /> Torch</label></li>
+        <li><label><input type="checkbox" name="attr_item_gadget1" value="1" /> Spy Gadget</label></li>
+        <li><label><input type="checkbox" name="attr_item_gadget2" value="1" /> Spy Gadget</label></li>
+        <li><label><input type="checkbox" name="attr_item_gadget3" value="1" /> Spy Gadget</label></li>
+        </ul>
+    </ul>
+    <h5>Special items</h5>
+    <input name="attr_class_items" type="hidden" value="@{class}" disabled="true" />
+    <ul class="controller">
+        <li> <label><input type="checkbox" name="attr_item_c1" value="0" /> <i>Fine cover identity</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_c2" value="1" /> Blueprints</label></li>
+        <li> <label><input type="checkbox" name="attr_item_c3" value="1" /> Cane-sword</label></li>
+        <li> <label><input type="checkbox" name="attr_item_c4" value="1" /> Fine commlink</label></li>
+    </ul>
+    <ul class="eng">
+        <li> <label><input type="checkbox" name="attr_item_e1" value="1" /> Range extender</label></li>
+        <li> <label><input type="checkbox" name="attr_item_e2" value="1" /> Fine Tinkering Tools</label></li>
+        <li> <label><input type="checkbox" name="attr_item_e3" value="1" /> Spy Gadget</label></li>
+        <li> <label><input type="checkbox" name="attr_item_e4" value="1" /> Spy Gadget</label></li>
+        <li> <label><input type="checkbox" name="attr_item_e5" value="2" /> Field Harness [2 load]</label></li>
+    </ul>
+    <ul class="adept">
+        <li> <label><input type="checkbox" name="attr_item_a1" value="1" /> <i>Psychic focus</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_a2" value="1" /> <i>Banishing charm</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_a3" value="2" /> Fine clothing and jewelry</label></li>
+    </ul>
+    </div>
+        <div class="healing section">
+            <h3>Healing</h3>
+            <label class="xp-clear"><input type="radio" name="attr_clock_val" value="0" checked="true" />Clear</label>
+            <div class="clock">
+                <input type="hidden" name="attr_clock_size" class="size" value="4" />
+                <input type="radio" name="attr_clock_val" value="8" />
+                <input type="radio" name="attr_clock_val" value="7" />
+                <input type="radio" name="attr_clock_val" value="6" />
+                <input type="radio" name="attr_clock_val" value="5" />
+                <input type="radio" name="attr_clock_val" value="4" />
+                <input type="radio" name="attr_clock_val" value="3" />
+                <input type="radio" name="attr_clock_val" value="2" />
+                <input type="radio" name="attr_clock_val" value="1" />
+            </div>
+        </div>
+        <div class="harm section">
+            <h3>Harm</h3>
+            <table>
+                <colgroup>
+                    <col />
+                    <col />
+                    <col />
+                    <col />
+                </colgroup>
+                <tr>
+                    <td class="num">3</td>
+                    <td colspan="2"><input type="text" name="attr_harm3" /></td>
+                    <td class="lbl">Need Help</td>
+                </tr><tr>
+                    <td class="num">2</td>
+                    <td style="border-right:1px solid black;"><input type="text" name="attr_harm2_1" /></td>
+                    <td><input type="text" name="attr_harm2_2" /></td>
+                    <td class="lbl">-1d</td>
+                </tr><tr>
+                    <td class="num">1</td>
+                    <td style="border-right:1px solid black;"><input type="text" name="attr_harm1_1" /></td>
+                    <td><input type="text" name="attr_harm1_2" /></td>
+                    <td class="lbl">Less Effect</td>
+                </tr>
+            </table>
+        </div>
+        <div class="armor section">
+            <h3>Armour Use</h3>
+            <p><label><input type="checkbox" name="attr_armour_use_std" value="1"/> Armour</label></p>
+            <p><label><input type="checkbox" name="attr_armour_use_heavy" value="1"/> Heavy</label></p>
+            <p><label><input type="checkbox" name="attr_armour_use_special" value="1"/> Special</label></p>
+        </div>
+        <div class="iskill section">
+            <h3>Investigative Skills</h3>
+            <p><select name="attr_skill_A">
+                <option value="">-- select a skill --</option>
+                <option>Accounting</option>
+                <option>Archaelogy</option>
+                <option>Architecture</option>
+                <option>Art History</option>
+                <option>Astronomy</option>
+                <option>Bureaucracy</option>
+                <option>Chemistry</option>
+                <option>Criminology</option>
+                <option>Cryptography</option>
+                <option>Data Recovery</option>
+                <option>Diagnosis</option>
+                <option>Electronic Surveillance</option>
+                <option>Forensic Pathology</option>
+                <option>Forgery</option>
+                <option>Fringe Science</option>
+                <option>High Society</option>
+                <option>History</option>
+                <option>Human Terrain</option>
+                <option>Languages</option>
+                <option>Law</option>
+                <option>Military Science</option>
+                <option>Occult Studies</option>
+                <option>Outdoor Survival</option>
+                <option>Pharmacy</option>
+                <option>Photography</option>
+                <option>Physics</option>
+                <option>Research</option>
+                <option>Streetwise</option>
+                <option>Tradecraft</option>
+                <option>Traffic Analysis</option>
+                <option>Urban Survival</option>
+                <option>Vampirology</option>
+                </select></p>
+            <p><select name="attr_skill_B">
+                <option value="">-- select a skill --</option>
+                <option>Accounting</option>
+                <option>Archaelogy</option>
+                <option>Architecture</option>
+                <option>Art History</option>
+                <option>Astronomy</option>
+                <option>Bureaucracy</option>
+                <option>Chemistry</option>
+                <option>Criminology</option>
+                <option>Cryptography</option>
+                <option>Data Recovery</option>
+                <option>Diagnosis</option>
+                <option>Electronic Surveillance</option>
+                <option>Forensic Pathology</option>
+                <option>Forgery</option>
+                <option>Fringe Science</option>
+                <option>High Society</option>
+                <option>History</option>
+                <option>Human Terrain</option>
+                <option>Languages</option>
+                <option>Law</option>
+                <option>Military Science</option>
+                <option>Occult Studies</option>
+                <option>Outdoor Survival</option>
+                <option>Pharmacy</option>
+                <option>Photography</option>
+                <option>Physics</option>
+                <option>Research</option>
+                <option>Streetwise</option>
+                <option>Tradecraft</option>
+                <option>Traffic Analysis</option>
+                <option>Urban Survival</option>
+                <option>Vampirology</option>
+                </select></p>
+            <p><select name="attr_skill_C">
+                <option value="">-- select a skill --</option>
+                <option>Accounting</option>
+                <option>Archaelogy</option>
+                <option>Architecture</option>
+                <option>Art History</option>
+                <option>Astronomy</option>
+                <option>Bureaucracy</option>
+                <option>Chemistry</option>
+                <option>Criminology</option>
+                <option>Cryptography</option>
+                <option>Data Recovery</option>
+                <option>Diagnosis</option>
+                <option>Electronic Surveillance</option>
+                <option>Forensic Pathology</option>
+                <option>Forgery</option>
+                <option>Fringe Science</option>
+                <option>High Society</option>
+                <option>History</option>
+                <option>Human Terrain</option>
+                <option>Languages</option>
+                <option>Law</option>
+                <option>Military Science</option>
+                <option>Occult Studies</option>
+                <option>Outdoor Survival</option>
+                <option>Pharmacy</option>
+                <option>Photography</option>
+                <option>Physics</option>
+                <option>Research</option>
+                <option>Streetwise</option>
+                <option>Tradecraft</option>
+                <option>Traffic Analysis</option>
+                <option>Urban Survival</option>
+                <option>Vampirology</option>
+                </select></p>
+        </div>
     <div class="misc section">
       <label>Notes</label>
       <textarea name="attr_notes"></textarea>
