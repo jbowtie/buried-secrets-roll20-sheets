@@ -325,7 +325,7 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-squadcard {
     background-color: #ddd;
     border-radius: 0.5em;
-    padding: 1em;
+    padding: 1em 0.5em;
     border: 1px dotted #222;
 }
 .sheet-squadcard h4 ~ label {

@@ -96,84 +96,87 @@
         </span>
         <label class="xp-clear ib"><input type="radio" name="attr_crew_heat" value="0" checked="true" />Clear Heat</label></p>
         <h4>Threat</h4>
-        <p>As the threat level increases, the more dangerous and desperate the conspiracy becomes. A threat level of 5 triggers a final confrontation with the most powerful members of the conspiracy, ending only with the complete destruction of one side or the other.</p>
+        <p>As the threat level increases, the more dangerous and desperate the conspiracy becomes. If the threat level ever reaches 5, the crew is destroyed by the full might of the conspiracy.</p>
         <p><label>Threat: <input type="number" name="attr_crew_threat" value="0"/></label></p>
     </div>
     <div class="section personnel">
         <h3>Experts</h3>
         <p>An expert has two actions and one investigative skill. They can be promoted to an agent when there is a vacancy.</p>
         <fieldset class="repeating_expert">
-            skill / attr 1 / attr 2
-            <p>
-                <input type="text" name="attr_expert_name" />
-                <input type="checkbox" name="attr_expert_w1" value="1" /> <input type="checkbox" name="attr_expert_w2" value="1" /> <input type="checkbox" name="attr_expert_w3" value="1" />
-                <input type="number" value="0" name="attr_expert_stress" />
-                <select name="attr_expert_action1">
-                    <option value="">- select an action -</option>
-                    <option>Hunt</option>
-                    <option>Study</option>
-                    <option>Survey</option>
-                    <option>Tinker</option>
-                    <option>Finesse</option>
-                    <option>Prowl</option>
-                    <option>Skirmish</option>
-                    <option>Wreck</option>
-                    <option>Attune</option>
-                    <option>Command</option>
-                    <option>Consort</option>
-                    <option>Sway</option>
-                </select>
-                <select name="attr_expert_action2">
-                    <option value="">- select an action -</option>
-                    <option>Hunt</option>
-                    <option>Study</option>
-                    <option>Survey</option>
-                    <option>Tinker</option>
-                    <option>Finesse</option>
-                    <option>Prowl</option>
-                    <option>Skirmish</option>
-                    <option>Wreck</option>
-                    <option>Attune</option>
-                    <option>Command</option>
-                    <option>Consort</option>
-                    <option>Sway</option>
-                </select>
-                <select name="attr_expert_skill">
-                <option value="">-- select a skill --</option>
-                <option>Accounting</option>
-                <option>Archaelogy</option>
-                <option>Architecture</option>
-                <option>Art History</option>
-                <option>Astronomy</option>
-                <option>Bureaucracy</option>
-                <option>Chemistry</option>
-                <option>Criminology</option>
-                <option>Cryptography</option>
-                <option>Data Recovery</option>
-                <option>Diagnosis</option>
-                <option>Electronic Surveillance</option>
-                <option>Forensic Pathology</option>
-                <option>Forgery</option>
-                <option>Fringe Science</option>
-                <option>High Society</option>
-                <option>History</option>
-                <option>Human Terrain</option>
-                <option>Languages</option>
-                <option>Law</option>
-                <option>Military Science</option>
-                <option>Occult Studies</option>
-                <option>Outdoor Survival</option>
-                <option>Pharmacy</option>
-                <option>Photography</option>
-                <option>Physics</option>
-                <option>Research</option>
-                <option>Streetwise</option>
-                <option>Tradecraft</option>
-                <option>Traffic Analysis</option>
-                <option>Urban Survival</option>
-                <option>Vampirology</option>
-                </select>
-            </p>
+            <div class="squadcard">
+                <p>
+                    <b>Name:</b> <input type="text" name="attr_expert_name" />
+                    <b>Wounds:</b> <input type="checkbox" name="attr_expert_w1" value="1" /> <input type="checkbox" name="attr_expert_w2" value="1" /> <input type="checkbox" name="attr_expert_w3" value="1" />
+                    <b>Stress:</b> <input type="number" value="0" name="attr_expert_stress" />
+                </p>
+                <p>
+                    <select name="attr_expert_action1">
+                        <option value="">- select an action -</option>
+                        <option>Hunt</option>
+                        <option>Study</option>
+                        <option>Survey</option>
+                        <option>Tinker</option>
+                        <option>Finesse</option>
+                        <option>Prowl</option>
+                        <option>Skirmish</option>
+                        <option>Wreck</option>
+                        <option>Attune</option>
+                        <option>Command</option>
+                        <option>Consort</option>
+                        <option>Sway</option>
+                    </select>
+                    <select name="attr_expert_action2">
+                        <option value="">- select an action -</option>
+                        <option>Hunt</option>
+                        <option>Study</option>
+                        <option>Survey</option>
+                        <option>Tinker</option>
+                        <option>Finesse</option>
+                        <option>Prowl</option>
+                        <option>Skirmish</option>
+                        <option>Wreck</option>
+                        <option>Attune</option>
+                        <option>Command</option>
+                        <option>Consort</option>
+                        <option>Sway</option>
+                    </select>
+                    <select name="attr_expert_skill">
+                        <option value="">-- select a skill --</option>
+                        <option>Accounting</option>
+                        <option>Archaelogy</option>
+                        <option>Architecture</option>
+                        <option>Art History</option>
+                        <option>Astronomy</option>
+                        <option>Bureaucracy</option>
+                        <option>Chemistry</option>
+                        <option>Criminology</option>
+                        <option>Cryptography</option>
+                        <option>Data Recovery</option>
+                        <option>Diagnosis</option>
+                        <option>Electronic Surveillance</option>
+                        <option>Forensic Pathology</option>
+                        <option>Forgery</option>
+                        <option>Fringe Science</option>
+                        <option>High Society</option>
+                        <option>History</option>
+                        <option>Human Terrain</option>
+                        <option>Languages</option>
+                        <option>Law</option>
+                        <option>Military Science</option>
+                        <option>Occult Studies</option>
+                        <option>Outdoor Survival</option>
+                        <option>Pharmacy</option>
+                        <option>Photography</option>
+                        <option>Physics</option>
+                        <option>Research</option>
+                        <option>Streetwise</option>
+                        <option>Tradecraft</option>
+                        <option>Traffic Analysis</option>
+                        <option>Urban Survival</option>
+                        <option>Vampirology</option>
+                    </select>
+                </p>
+            </div>
         </fieldset>
         <h3>Squads</h3>
         <p>Personnel can add new squads when the quartermaster spends two upgrades, or recruit replacements for promoted (or dead) squad members
@@ -192,7 +195,7 @@
                             <option value="watchers">Watchers (hunt and survey)</option>
                         </select>
                     </h4>
-                    <label><input type="checkbox" name="attr_squad_elite" value="1" />Elite?</label>
+                    <label><input type="checkbox" name="attr_squad_elite" value="1" /> Elite?</label>
                     <table class="squad">
                         <tr>
                             <th>XP</th>
