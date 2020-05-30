@@ -40,6 +40,18 @@ input[name=attr_class_items][value=Engineer] ~ ul.sheet-eng {
 input[name=attr_class_items][value=Adept] ~ ul.sheet-adept {
     display: block;
 }
+input[name=attr_class_items][value=Shadow] ~ ul.sheet-shadow {
+    display: block;
+}
+input[name=attr_class_items][value=Sniper] ~ ul.sheet-sniper {
+    display: block;
+}
+input[name=attr_class_items][value=Hacker] ~ ul.sheet-hacker {
+    display: block;
+}
+input[name=attr_class_items][value=Soldier] ~ ul.sheet-soldier {
+    display: block;
+}
 
 input[name=attr_class_power] ~ ul {
     display: none;
@@ -51,6 +63,18 @@ input[name=attr_class_power][value=Engineer] ~ ul.sheet-eng {
     display: block;
 }
 input[name=attr_class_power][value=Adept] ~ ul.sheet-adept {
+    display: block;
+}
+input[name=attr_class_power][value=Shadow] ~ ul.sheet-shadow {
+    display: block;
+}
+input[name=attr_class_power][value=Sniper] ~ ul.sheet-sniper {
+    display: block;
+}
+input[name=attr_class_power][value=Hacker] ~ ul.sheet-hacker {
+    display: block;
+}
+input[name=attr_class_power][value=Soldier] ~ ul.sheet-soldier {
     display: block;
 }
 
@@ -146,14 +170,19 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     margin-bottom: 1.5em;
 }
-.sheet-section .sheet-xp {
+.sheet-xp-track {
     position:absolute;
     right: 5px;
     top: 5px;
+}
+.sheet-xp {
     display:flex;
     flex-direction:row-reverse;
 }
-
+.sheet-xp.sheet-ib {
+    display:inline-flex;
+    vertical-align: middle;
+}
 .sheet-xp input {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -193,6 +222,7 @@ input[type=number]::-webkit-outer-spin-button {
     margin-bottom: none;
     font-size: 1em;
 }
+.sheet-xp-clear.sheet-ib { position:relative;right:0;top:0;display:inline-block;}
 .sheet-xp-clear input, .sheet-btn-choice input {
     display:none;
 }
@@ -276,6 +306,31 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-harm .sheet-lbl {
     width:4em;background-color: #ddd;
     font-variant: small-caps;font-size:90%;
+}
+
+/* squad table */
+.sheet-squad {
+    margin: 1em 0em;
+}
+.sheet-squad td {
+    padding: 0.25em;
+}
+.sheet-squad th {
+    padding-left:0.25em;
+}
+.sheet-area-squad .repcontainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.sheet-squadcard {
+    background-color: #ddd;
+    border-radius: 0.5em;
+    padding: 1em;
+    border: 1px dotted #222;
+}
+.sheet-squadcard h4 ~ label {
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
 }
 
 /*-- CLOCKS --*/

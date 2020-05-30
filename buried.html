@@ -1,4 +1,4 @@
-<input type="hidden" name="attr_version" value="1.04" />
+<input type="hidden" name="attr_version" value="1.05" />
 <input type="hidden" name="attr_sheet_type" value="choose" />
 <input type="hidden" name="attr_stress_max" value="8" />
 <div class="choose">
@@ -52,7 +52,7 @@
         <label><input type="checkbox" name="attr_trn_mastery" value="1" /> Mastery <i>[4 upgrades]</i></label>
     </div>
     <div class="power section">
-        <h3>Special Abilities<span class="xp" title="Playbook XP">
+        <h3>Special Abilities<span class="xp xp-track" title="Playbook XP">
                 <input type="radio" name="attr_xp_crew" value="8" />
                 <input type="radio" name="attr_xp_crew" value="7" />
                 <input type="radio" name="attr_xp_crew" value="6" />
@@ -72,28 +72,189 @@
       <textarea name="attr_notes"></textarea>
     </div>
 </div>
-<div class="role">
-    <h1>Role</h1>
+<div class="main role">
+    <div class="header flex-center section">
+        <h1><span name="attr_character_name"></span></h1>
+    </div>
+    <div class="section director">
+        <h3>Intel</h3>
+        <p>You can store up to 4 intel between missions (any extra must be spent immediately).The first vault upgrade allows you to store 8 intel; the second vault upgrade allows you to store up to 16 intel.</p>
+        <p><label>Intel: <input type="number" name="attr_crew_intel" value="0"/></label></p>
+        <h3>Heat</h3>
+        <p>Heat indicates how much attention your activities are attracting. If the track fills up, increase threat by one then clear the heat track.</p>
+        <p><b>Heat:</b>
+        <span class="xp ib stress">
+            <input type="radio" name="attr_crew_heat" value="9" />
+            <input type="radio" name="attr_crew_heat" value="8" />
+            <input type="radio" name="attr_crew_heat" value="7" />
+            <input type="radio" name="attr_crew_heat" value="6" />
+            <input type="radio" name="attr_crew_heat" value="5" />
+            <input type="radio" name="attr_crew_heat" value="4" />
+            <input type="radio" name="attr_crew_heat" value="3" />
+            <input type="radio" name="attr_crew_heat" value="2" />
+            <input type="radio" name="attr_crew_heat" value="1" />
+        </span>
+        <label class="xp-clear ib"><input type="radio" name="attr_crew_heat" value="0" checked="true" />Clear Heat</label></p>
+        <h4>Threat</h4>
+        <p>As the threat level increases, the more dangerous and desperate the conspiracy becomes. A threat level of 5 triggers a final confrontation with the most powerful members of the conspiracy, ending only with the complete destruction of one side or the other.</p>
+        <p><label>Threat: <input type="number" name="attr_crew_threat" value="0"/></label></p>
+    </div>
+    <div class="section personnel">
+        <h3>Experts</h3>
+        <p>An expert has two actions and one investigative skill. They can be promoted to an agent when there is a vacancy.</p>
+        <fieldset class="repeating_expert">
+            skill / attr 1 / attr 2
+            <p>
+                <input type="text" name="attr_expert_name" />
+                <input type="checkbox" name="attr_expert_w1" value="1" /> <input type="checkbox" name="attr_expert_w2" value="1" /> <input type="checkbox" name="attr_expert_w3" value="1" />
+                <input type="number" value="0" name="attr_expert_stress" />
+                <select name="attr_expert_action1">
+                    <option value="">- select an action -</option>
+                    <option>Hunt</option>
+                    <option>Study</option>
+                    <option>Survey</option>
+                    <option>Tinker</option>
+                    <option>Finesse</option>
+                    <option>Prowl</option>
+                    <option>Skirmish</option>
+                    <option>Wreck</option>
+                    <option>Attune</option>
+                    <option>Command</option>
+                    <option>Consort</option>
+                    <option>Sway</option>
+                </select>
+                <select name="attr_expert_action2">
+                    <option value="">- select an action -</option>
+                    <option>Hunt</option>
+                    <option>Study</option>
+                    <option>Survey</option>
+                    <option>Tinker</option>
+                    <option>Finesse</option>
+                    <option>Prowl</option>
+                    <option>Skirmish</option>
+                    <option>Wreck</option>
+                    <option>Attune</option>
+                    <option>Command</option>
+                    <option>Consort</option>
+                    <option>Sway</option>
+                </select>
+                <select name="attr_expert_skill">
+                <option value="">-- select a skill --</option>
+                <option>Accounting</option>
+                <option>Archaelogy</option>
+                <option>Architecture</option>
+                <option>Art History</option>
+                <option>Astronomy</option>
+                <option>Bureaucracy</option>
+                <option>Chemistry</option>
+                <option>Criminology</option>
+                <option>Cryptography</option>
+                <option>Data Recovery</option>
+                <option>Diagnosis</option>
+                <option>Electronic Surveillance</option>
+                <option>Forensic Pathology</option>
+                <option>Forgery</option>
+                <option>Fringe Science</option>
+                <option>High Society</option>
+                <option>History</option>
+                <option>Human Terrain</option>
+                <option>Languages</option>
+                <option>Law</option>
+                <option>Military Science</option>
+                <option>Occult Studies</option>
+                <option>Outdoor Survival</option>
+                <option>Pharmacy</option>
+                <option>Photography</option>
+                <option>Physics</option>
+                <option>Research</option>
+                <option>Streetwise</option>
+                <option>Tradecraft</option>
+                <option>Traffic Analysis</option>
+                <option>Urban Survival</option>
+                <option>Vampirology</option>
+                </select>
+            </p>
+        </fieldset>
+        <h3>Squads</h3>
+        <p>Personnel can add new squads when the quartermaster spends two upgrades, or recruit replacements for promoted (or dead) squad members
+            when the quartermaster performs a <b>Recruit</b> action.</p>
+        <p>Individual squad members are sometimes referred to as rookies. Personnel can choose to promote them to an expert any time after they reach 8 xp.</p>
+        <div class="area-squad">
+            <fieldset class="repeating_squad">
+                <div class="squadcard">
+                    <h4>
+                        Squad of <select name="attr_squad_type">
+                            <option value="">- select on squad creation -</option>
+                            <option value="agents">Agents (finesse and prowl)</option>
+                            <option value="boffins">Boffins (study and tinker)</option>
+                            <option value="logistics">Logistics (command and sway)</option>
+                            <option value="muscle">Muscle (wreck and skirmish)</option>
+                            <option value="watchers">Watchers (hunt and survey)</option>
+                        </select>
+                    </h4>
+                    <label><input type="checkbox" name="attr_squad_elite" value="1" />Elite?</label>
+                    <table class="squad">
+                        <tr>
+                            <th>XP</th>
+                            <th>Name</th>
+                            <th>Wounds</th>
+                            <th>Stress</th>
+                        </tr>
+                        <tr>
+                            <td><input type="number" value="0" name="attr_rookie1_xp" /></td>
+                            <td><input type="text" name="attr_rookie1_name" /></td>
+                            <td><input type="checkbox" name="attr_rookie1_w1" value="1" /> <input type="checkbox" name="attr_rookie1_w2" value="1" /> <input type="checkbox" name="attr_rookie1_w3" value="1" /></td>
+                            <td><input type="number" value="0" name="attr_rookie1_stress" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" value="0" name="attr_rookie2_xp" /></td>
+                            <td><input type="text" name="attr_rookie2_name" /></td>
+                            <td><input type="checkbox" name="attr_rookie2_w1" value="1" /> <input type="checkbox" name="attr_rookie2_w2" value="1" /> <input type="checkbox" name="attr_rookie2_w3" value="1" /></td>
+                            <td><input type="number" value="0" name="attr_rookie2_stress" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" value="0" name="attr_rookie3_xp" /></td>
+                            <td><input type="text" name="attr_rookie3_name" /></td>
+                            <td><input type="checkbox" name="attr_rookie3_w1" value="1" /> <input type="checkbox" name="attr_rookie3_w2" value="1" /> <input type="checkbox" name="attr_rookie3_w3" value="1" /></td>
+                            <td><input type="number" value="0" name="attr_rookie3_stress" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" value="0" name="attr_rookie4_xp" /></td>
+                            <td><input type="text" name="attr_rookie4_name" /></td>
+                            <td><input type="checkbox" name="attr_rookie4_w1" value="1" /> <input type="checkbox" name="attr_rookie4_w2" value="1" /> <input type="checkbox" name="attr_rookie4_w3" value="1" /></td>
+                            <td><input type="number" value="0" name="attr_rookie4_stress" /></td>
+                        </tr>
+                        <tr>
+                            <td><input type="number" value="0" name="attr_rookie5_xp" /></td>
+                            <td><input type="text" name="attr_rookie5_name" /></td>
+                            <td><input type="checkbox" name="attr_rookie5_w1" value="1" /> <input type="checkbox" name="attr_rookie5_w2" value="1" /> <input type="checkbox" name="attr_rookie5_w3" value="1" /></td>
+                            <td><input type="number" value="0" name="attr_rookie5_stress" /></td>
+                        </tr>
+                    </table>
+                </div>
+            </fieldset>
+        </div>
+    </div>
 </div>
 <div class="main agent">
     <div class="header flex-center section">
         <h1>Playbook: <input name="attr_class" type="text" /></h1>
         <p>Name: <input name="attr_character_name" type="text" spellcheck="false"  /></p>
-        <span class="xp stress">
-                <input type="radio" name="attr_stress" value="8" />
-                <input type="radio" name="attr_stress" value="7" />
-                <input type="radio" name="attr_stress" value="6" />
-                <input type="radio" name="attr_stress" value="5" />
-                <input type="radio" name="attr_stress" value="4" />
-                <input type="radio" name="attr_stress" value="3" />
-                <input type="radio" name="attr_stress" value="2" />
-                <input type="radio" name="attr_stress" value="1" />
+        <span class="xp stress xp-track">
+            <input type="radio" name="attr_stress" value="8" />
+            <input type="radio" name="attr_stress" value="7" />
+            <input type="radio" name="attr_stress" value="6" />
+            <input type="radio" name="attr_stress" value="5" />
+            <input type="radio" name="attr_stress" value="4" />
+            <input type="radio" name="attr_stress" value="3" />
+            <input type="radio" name="attr_stress" value="2" />
+            <input type="radio" name="attr_stress" value="1" />
         </span>
         <label class="xp-clear"><input type="radio" name="attr_stress" value="0" checked="true" />Clear Stress</label>
     </div>
     <div class="insight section">
         <input type="hidden" name="attr_insight" value="0" />
-        <h3>Insight <button type="roll" title="Resist deception" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Insight}} {{attr_num=[[@{insight}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{insight})d6kh1]]}}"></button><span class="xp" title="Insight XP">
+        <h3>Insight <button type="roll" title="Resist deception" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Insight}} {{attr_num=[[@{insight}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{insight})d6kh1]]}}"></button><span class="xp xp-track" title="Insight XP">
                 <input type="radio" name="attr_xp_insight" value="6" />
                 <input type="radio" name="attr_xp_insight" value="5" />
                 <input type="radio" name="attr_xp_insight" value="4" />
@@ -109,7 +270,7 @@
     </div>
     <div class="prowess section">
         <input type="hidden" name="attr_prowess" value="0" />
-        <h3>Prowess<button type="roll" title="Resist physical damage" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Prowess}} {{attr_num=[[@{prowess}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{prowess})d6kh1]]}}"></button><span class="xp" title="Prowess XP">
+        <h3>Prowess<button type="roll" title="Resist physical damage" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Prowess}} {{attr_num=[[@{prowess}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{prowess})d6kh1]]}}"></button><span class="xp xp-track" title="Prowess XP">
                 <input type="radio" name="attr_xp_prowess" value="6" />
                 <input type="radio" name="attr_xp_prowess" value="5" />
                 <input type="radio" name="attr_xp_prowess" value="4" />
@@ -125,7 +286,7 @@
     </div>
     <div class="resolve section">
         <input type="hidden" name="attr_resolve" value="0" />
-        <h3>Resolve<button type="roll" title="Resist mental strain" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Resolve}} {{attr_num=[[@{resolve}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{resolve})d6kh1]]}}"></button><span class="xp" title="Resolve XP">
+        <h3>Resolve<button type="roll" title="Resist mental strain" value="&amp;{template:resist} {{name=@{character_name}}} {{attr=Resolve}} {{attr_num=[[@{resolve}]]}} {{zero=[[6-2d6kl1]]}} {{stress=[[6-(@{resolve})d6kh1]]}}"></button><span class="xp xp-track" title="Resolve XP">
                 <input type="radio" name="attr_xp_resolve" value="6" />
                 <input type="radio" name="attr_xp_resolve" value="5" />
                 <input type="radio" name="attr_xp_resolve" value="4" />
@@ -141,7 +302,7 @@
     </div>
     <div class="power section">
         <input name="attr_class_power" type="hidden" value="@{class}" disabled="true" />
-        <h3>Special Abilities<span class="xp" title="Playbook XP">
+        <h3>Special Abilities<span class="xp xp-track" title="Playbook XP">
                 <input type="radio" name="attr_xp_power" value="8" />
                 <input type="radio" name="attr_xp_power" value="7" />
                 <input type="radio" name="attr_xp_power" value="6" />
@@ -178,6 +339,34 @@
         <li><label><input type="checkbox" name="attr_power_e5" value="1" />  Physician</label> &mdash; You can Tinker bones, blood, and bodily fluids to treat wounds, perform surgery, or stabilize the dying. You may Study an ailment or corpse. Everyone in your crew (including you) gets +1d to their healing treatment rolls.</li>
         <li><label><input type="checkbox" name="attr_power_e6" value="1" />  Fortitude</label> &mdash; You may expend your special armor to resist a consequence of fatigue, weakness, or chemical effects, or to push yourself when working with technical skill or handling chemicals.</li>
         <li><label><input type="checkbox" name="attr_power_e7" value="1" />  Subterfuge</label> &mdash; You may expend your special armor to resist a consequence from suspicion or persuasion, or to push yourself for subterfuge.</li>
+</ul>
+
+<ul class="shadow">
+        <li><label><input type="checkbox" name="attr_power_sh1" value="1" />  Infiltrator</label> &mdash; You are not affected by quality or Tier when you bypass security measures.</li>
+        <li><label><input type="checkbox" name="attr_power_sh2" value="1" />  Shadow</label> &mdash; You may expend your special armor to resist a consequence from detection or security measures, or to push yourself for a feat of athletics or stealth.</li>
+        <li><label><input type="checkbox" name="attr_power_sh3" value="1" />  Reflexes</label> &mdash; When there’s a question about who acts first, the answer is you.</li>
+        <li><label><input type="checkbox" name="attr_power_sh4" value="1" />  Daredevil</label> &mdash; When you roll a desperate action, you get +1d to your roll if you also take -1d to any resistance rolls against consequences from your action.</li>
+        <li><label><input type="checkbox" name="attr_power_sh5" value="1" />  Rook’s Gambit</label> &mdash; Take 2 stress to roll your best action rating while performing a different action. Say how you adapt your skill to this use.</li>
+        <li><label><input type="checkbox" name="attr_power_sh6" value="1" />  Trust in Me</label> &mdash; You get +1d vs. a target with whom you have an intimate relationship.</li>
+        <li><label><input type="checkbox" name="attr_power_sh7" value="1" />  Master of Disguise</label> &mdash; When you use a disguise or other form of covert misdirection you get +1 effect level. When you throw off your disguise, the resulting surprise gives you the initiative in the situation.</li>
+</ul>
+<ul class="sniper">
+        <li><label><input type="checkbox" name="attr_power_sn1" value="1" />  Sharpshooter</label> &mdash; You can push yourself to do one of the following: make a ranged attack at extreme distance beyond what’s normal for the weapon—unleash a barrage of rapid fire to suppress the enemy.</li>
+        <li><label><input type="checkbox" name="attr_power_sn2" value="1" />  Scout</label> &mdash; When you gather info to locate a target, you get +1 effect. When you hide in a prepared position or use camouflage, you get +1d to rolls to avoid detection.</li>
+        <li><label><input type="checkbox" name="attr_power_sn3" value="1" />  Focused</label> &mdash; You may expend your special armor to resist a consequence of surprise or mental harm (fear, confusion, losing track of someone) or to push yourself for ranged combat or tracking.</li>
+        <li><label><input type="checkbox" name="attr_power_sn4" value="1" />  Ambush</label> &mdash; When you attack from hiding or spring a trap, you get +1d to your roll.</li>
+        <li><label><input type="checkbox" name="attr_power_sn5" value="1" />  Tough as nails</label> &mdash; Penalties from harm are one level less severe (though level 4 harm is still fatal).</li>
+        <li><label><input type="checkbox" name="attr_power_sn6" value="1" />  Vengeful</label> &mdash; You gain an additional xp trigger: You got payback against someone who harmed you or someone you care about. <i>If your crew helped you get payback, also mark crew xp.</i></li>
+        <li><label><input type="checkbox" name="attr_power_sn7" value="1" />  Cover Fire</label> &mdash; When you wield multiple ranged weapons, the scale of your attacks increases. When you unleash a barrage of rapid fire at an enemy, you get +1d to suppress them.</li>
+</ul>
+<ul class="hacker">
+        <li><label><input type="checkbox" name="attr_power_h1" value="1" />  Quick Study</label> &mdash; When you Study to identify or exploit weakness during a mission, you get +1 effect level. When you train the same thing a second time during downtime, you earn 1 XP.</li>
+        <li><label><input type="checkbox" name="attr_power_h2" value="1" />  Whiz</label> &mdash; You can push yourself to do one of the following: completely ignore distractions (real or virtual) — disrupt wireless communications in an area.</li>
+        <li><label><input type="checkbox" name="attr_power_h3" value="1" />  Analyst</label> &mdash; During downtime, you get two ticks to distribute among any long term project clocks that involve investigation or learning a new program or design plan.</li>
+        <li><label><input type="checkbox" name="attr_power_h4" value="1" />  Digital ward</label> &mdash; When you Wreck a computer or network, ruining it for any other use, it becomes either anathema or enticing to computer viruses and other hackers.</li>
+        <li><label><input type="checkbox" name="attr_power_h5" value="1" />  White noise generator</label> &mdash; You may interfere with surveillance tech, becoming shadowy and insubstantial on all recordings for a few moments. Take 2 stress when you activate this ability, plus one stress for each extra feature. <i>It lasts for a few minutes rather than moments — you are invisible rather than shadowy — it affects human senses as well</i></li>
+        <li><label><input type="checkbox" name="attr_power_h6" value="1" />  Multitasker</label> &mdash; You can push yourself to do one of the following: control a small group of rigged machines as easily as one — perform non-VR actions while in VR without disconnecting.</li>
+        <li><label><input type="checkbox" name="attr_power_h7" value="1" />  Search Protocol</label> &mdash; You have access to the best tech expertise. Take +1d to gather information about technology by any means.</li>
 </ul>
       <fieldset class="repeating_power">
           <textarea name="attr_power" type="text"></textarea>
@@ -222,9 +411,28 @@
         <li> <label><input type="checkbox" name="attr_item_e5" value="2" /> Field Harness [2 load]</label></li>
     </ul>
     <ul class="adept">
-        <li> <label><input type="checkbox" name="attr_item_a1" value="1" /> <i>Psychic focus</i></label></li>
-        <li> <label><input type="checkbox" name="attr_item_a2" value="1" /> <i>Banishing charm</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_a1" value="0" /> <i>Psychic focus</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_a2" value="0" /> <i>Banishing charm</i></label></li>
         <li> <label><input type="checkbox" name="attr_item_a3" value="2" /> Fine clothing and jewelry</label></li>
+    </ul>
+    <ul class="shadow">
+        <li> <label><input type="checkbox" name="attr_item_sh1" value="1" /> Fine surveillance gear</label></li>
+        <li> <label><input type="checkbox" name="attr_item_sh2" value="1" /> Fine disguse kit</label></li>
+        <li> <label><input type="checkbox" name="attr_item_sh3" value="0" /> <i>Concealed holdout pistol</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_sh4" value="0" /> <i>Tiny surveillance drone</i></label></li>
+    </ul>
+    <ul class="sniper">
+        <li> <label><input type="checkbox" name="attr_item_sn1" value="1" /> Light climbing gear</label></li>
+        <li> <label><input type="checkbox" name="attr_item_sn2" value="2" /> Fine sniper rifle</label></li>
+        <li> <label><input type="checkbox" name="attr_item_sn3" value="1" /> Specialty ammo</label></li>
+        <li> <label><input type="checkbox" name="attr_item_sn4" value="1" /> Comms laser</label></li>
+    </ul>
+    <ul class="hacker">
+        <li> <label><input type="checkbox" name="attr_item_h1" value="1" /> Portable multiband noise generator</label></li>
+        <li> <label><input type="checkbox" name="attr_item_h2" value="1" /> Fine storage device</label></li>
+        <li> <label><input type="checkbox" name="attr_item_h3" value="2" /> TEMPEST monitor [2 load]</label></li>
+        <li> <label><input type="checkbox" name="attr_item_h4" value="0" /> <i>Custom app</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_h5" value="0" /> <i>Custom app</i></label></li>
     </ul>
     </div>
         <div class="healing section">
