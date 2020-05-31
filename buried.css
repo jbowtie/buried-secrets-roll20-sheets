@@ -78,6 +78,16 @@ input[name=attr_class_power][value=Soldier] ~ ul.sheet-soldier {
     display: block;
 }
 
+.sheet-director, .sheet-qm, .sheet-personnel {display: none;}
+input[name=attr_class_role][value=Director] ~ .sheet-director {
+    display: block;
+}
+input[name=attr_class_role][value=Quartermaster] ~ .sheet-qm {
+    display: block;
+}
+input[name=attr_class_role][value=Personnel] ~ .sheet-personnel {
+    display: block;
+}
 /*----------------- GENERAL CSS ------------------*/
 
 textarea {
@@ -105,6 +115,10 @@ label.sheet-lbl {
 .sheet-flex-center {
   align-items: center;
   justify-content: center;
+}
+
+.sheet-section * + h3 {
+    margin-top: 1em;
 }
 
 /*------------- Section-specific CSS -------------*/
@@ -318,7 +332,7 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-squad th {
     padding-left:0.25em;
 }
-.sheet-area-squad .repcontainer{
+.sheet-area-squad .repcontainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -331,6 +345,21 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-squadcard h4 ~ label {
     font-size: 1.2em;
     margin-bottom: 0.5em;
+}
+
+.sheet-ltp .repcontainer {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 0.5em;
+}
+.sheet-clockcard {
+    background-color: #ddd;
+    border-radius: 0.5em;
+    padding: 0.5em;
+
+}
+.sheet-clock-lbl {
+    width: 100%;
 }
 
 /*-- CLOCKS --*/

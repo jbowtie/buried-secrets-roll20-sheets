@@ -1,4 +1,4 @@
-<input type="hidden" name="attr_version" value="1.05" />
+<input type="hidden" name="attr_version" value="1.06" />
 <input type="hidden" name="attr_sheet_type" value="choose" />
 <input type="hidden" name="attr_stress_max" value="8" />
 <div class="choose">
@@ -11,7 +11,6 @@
     <div class="header flex-center section">
         <h1>Playbook: <input name="attr_class" type="text" /></h1>
         <p>Name: <input name="attr_character_name" type="text" spellcheck="false"  /></p>
-        <p><label>Intel: <input type="number" name="attr_crew_intel" value="0"/></label></p>
         <p><label>Available upgrades: <input type="number" name="attr_crew_upgrades" value="2"/></label></p>
     </div>
     <div class="hqup section">
@@ -37,19 +36,17 @@
     </div>
     <div class="crewup section">
         <h3>Crew Upgrades</h3>
-        <label><input type="checkbox" name="attr_cup_muscle" value="1" /> Muscle</label>
         <label><input type="checkbox" name="attr_cup_boffins" value="1" /> Elite boffins</label>
         <label><input type="checkbox" name="attr_cup_watchers" value="1" /> Elite watchers</label>
         <label><input type="checkbox" name="attr_cup_arcanew" value="1" /> Arcane Workshop</label>
         <label><input type="checkbox" name="attr_cup_mystic" value="1" /> Mystic Tools <i>(2 free load occult items)</i></label>
-        <label><input type="checkbox" name="attr_cup_ordained" value="1" /> Ordained (+1 trauma) <i>[3 upgrades]</i></label>
+        <label><input type="checkbox" name="attr_cup_ordained" value="3" /> Ordained (+1 trauma) <i>[3 upgrades]</i></label>
         <h3>Training</h3>
         <p><i>2xp during downtime training</i></p>
         <label><input type="checkbox" name="attr_trn_insight" value="1" /> Insight</label>
         <label><input type="checkbox" name="attr_trn_prowess" value="1" /> Prowess</label>
         <label><input type="checkbox" name="attr_trn_resolve" value="1" /> Resolve</label>
         <label><input type="checkbox" name="attr_trn_playbook" value="1" /> Playbook</label>
-        <label><input type="checkbox" name="attr_trn_mastery" value="1" /> Mastery <i>[4 upgrades]</i></label>
     </div>
     <div class="power section">
         <h3>Special Abilities<span class="xp xp-track" title="Playbook XP">
@@ -76,6 +73,7 @@
     <div class="header flex-center section">
         <h1><span name="attr_character_name"></span></h1>
     </div>
+    <input name="attr_class_role" type="hidden" value="@{class}" disabled="true" />
     <div class="section director">
         <h3>Intel</h3>
         <p>You can store up to 4 intel between missions (any extra must be spent immediately).The first vault upgrade allows you to store 8 intel; the second vault upgrade allows you to store up to 16 intel.</p>
@@ -237,6 +235,45 @@
                 </div>
             </fieldset>
         </div>
+    </div>
+    <div class="section qm">
+        <h3>Manage Crew Sheet</h3>
+        <p>Manage crew XP, upgrades, and headquarters on the seperate <b>Crew sheet</b>.</p>
+        <h3>Contacts and Assets</h3>
+        <p>Contacts can be acquired through missions or cultivated via long-term projects. The crew always starts with one.</p>
+        <p>You can use the *Acquire Assets* activity to hire outside personnel for an upcoming mission.</p>
+        <div>
+        <fieldset class="repeating_contacts">
+            <div class="contactcard">
+                <p>Name: <input type="text" name="attr_contact_name" spellcheck="false" /> Detail: <input type="text" name="attr_contact_detail" /></p>
+            </div>
+        </fieldset>
+        </div>
+        <h3>Long-Term Projects</h3>
+        <div class="ltp">
+            <p>Create and track the crew's long-term projects. The agent assigned to lead the project rolls to advance the project clock.</p>
+            <fieldset class="repeating_ltp">
+                <div class="clockcard">
+                <label class="xp-clear"><input type="radio" name="attr_clock_val" value="0" checked="true" />Clear</label>
+                <div class="clock">
+                    <input type="hidden" name="attr_clock_size" class="size" value="8" />
+                    <input type="radio" name="attr_clock_val" value="8" />
+                    <input type="radio" name="attr_clock_val" value="7" />
+                    <input type="radio" name="attr_clock_val" value="6" />
+                    <input type="radio" name="attr_clock_val" value="5" />
+                    <input type="radio" name="attr_clock_val" value="4" />
+                    <input type="radio" name="attr_clock_val" value="3" />
+                    <input type="radio" name="attr_clock_val" value="2" />
+                    <input type="radio" name="attr_clock_val" value="1" />
+                </div>
+                <input type="text" name="attr_clock_name" class="clock-lbl" />
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <div class="misc section">
+      <label>Notes</label>
+      <textarea name="attr_notes"></textarea>
     </div>
 </div>
 <div class="main agent">
