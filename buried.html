@@ -1,4 +1,4 @@
-<input type="hidden" name="attr_version" value="1.06" />
+<input type="hidden" name="attr_version" value="1.07" />
 <input type="hidden" name="attr_sheet_type" value="choose" />
 <input type="hidden" name="attr_stress_max" value="8" />
 <div class="choose">
@@ -278,7 +278,7 @@
 </div>
 <div class="main agent">
     <div class="header flex-center section">
-        <h1>Playbook: <input name="attr_class" type="text" /></h1>
+        <h1><span name="attr_class"></span></h1>
         <p>Name: <input name="attr_character_name" type="text" spellcheck="false"  /></p>
         <span class="xp stress xp-track">
             <input type="radio" name="attr_stress" value="8" />
@@ -291,6 +291,7 @@
             <input type="radio" name="attr_stress" value="1" />
         </span>
         <label class="xp-clear"><input type="radio" name="attr_stress" value="0" checked="true" />Clear Stress</label>
+        <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Fortune}} {{attr_num=[[?{Dice|0|1|2|3|4|5}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(?{Dice|0|1|2|3|4|5})d6kh1]]}}">Fortune Roll</button>
     </div>
     <div class="insight section">
         <input type="hidden" name="attr_insight" value="0" />
@@ -413,7 +414,7 @@
       </fieldset>
     </div>
     <div class="inv section">
-        <h3>Load</h3>
+        <h3>Load<button style="float:right;height:1em;" type="action" name="act_clearinv">Clear</button></h3>
         <label class="btn-choice"><input type="radio" name="attr_load_max" value="3" /><span>3 Light</span></label>
         <label class="btn-choice"><input type="radio" name="attr_load_max" value="5" /><span>5 Normal</span></label>
         <label class="btn-choice"><input type="radio" name="attr_load_max" value="6" /><span>6 Heavy</span></label>
@@ -438,7 +439,7 @@
     <h5>Special items</h5>
     <input name="attr_class_items" type="hidden" value="@{class}" disabled="true" />
     <ul class="controller">
-        <li> <label><input type="checkbox" name="attr_item_c1" value="0" /> <i>Fine cover identity</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_c1" value="-1" /> <i>Fine cover identity</i></label></li>
         <li> <label><input type="checkbox" name="attr_item_c2" value="1" /> Blueprints</label></li>
         <li> <label><input type="checkbox" name="attr_item_c3" value="1" /> Cane-sword</label></li>
         <li> <label><input type="checkbox" name="attr_item_c4" value="1" /> Fine commlink</label></li>
@@ -451,15 +452,15 @@
         <li> <label><input type="checkbox" name="attr_item_e5" value="2" /> Field Harness [2 load]</label></li>
     </ul>
     <ul class="adept">
-        <li> <label><input type="checkbox" name="attr_item_a1" value="0" /> <i>Psychic focus</i></label></li>
-        <li> <label><input type="checkbox" name="attr_item_a2" value="0" /> <i>Banishing charm</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_a1" value="-1" /> <i>Psychic focus</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_a2" value="-1" /> <i>Banishing charm</i></label></li>
         <li> <label><input type="checkbox" name="attr_item_a3" value="2" /> Fine clothing and jewelry</label></li>
     </ul>
     <ul class="shadow">
         <li> <label><input type="checkbox" name="attr_item_sh1" value="1" /> Fine surveillance gear</label></li>
         <li> <label><input type="checkbox" name="attr_item_sh2" value="1" /> Fine disguse kit</label></li>
-        <li> <label><input type="checkbox" name="attr_item_sh3" value="0" /> <i>Concealed holdout pistol</i></label></li>
-        <li> <label><input type="checkbox" name="attr_item_sh4" value="0" /> <i>Tiny surveillance drone</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_sh3" value="-1" /> <i>Concealed holdout pistol</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_sh4" value="-1" /> <i>Tiny surveillance drone</i></label></li>
     </ul>
     <ul class="sniper">
         <li> <label><input type="checkbox" name="attr_item_sn1" value="1" /> Light climbing gear</label></li>
@@ -471,8 +472,8 @@
         <li> <label><input type="checkbox" name="attr_item_h1" value="1" /> Portable multiband noise generator</label></li>
         <li> <label><input type="checkbox" name="attr_item_h2" value="1" /> Fine storage device</label></li>
         <li> <label><input type="checkbox" name="attr_item_h3" value="2" /> TEMPEST monitor [2 load]</label></li>
-        <li> <label><input type="checkbox" name="attr_item_h4" value="0" /> <i>Custom app</i></label></li>
-        <li> <label><input type="checkbox" name="attr_item_h5" value="0" /> <i>Custom app</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_h4" value="-1" /> <i>Custom app</i></label></li>
+        <li> <label><input type="checkbox" name="attr_item_h5" value="-1" /> <i>Custom app</i></label></li>
     </ul>
     </div>
         <div class="healing section">
@@ -707,5 +708,49 @@ on( "change:attune change:command change:consort change:sway", function() {
     let val = Object.keys(values).filter(key => values[key] > 0).length;
     setAttrs({resolve: val});
    });
+});
+on( "clicked:clearinv", function() {
+  setAttrs( {
+    item_pistol1: 0,
+    item_pistol2: 0,
+    item_armor: 0,
+    item_heavy: 0,
+    item_burglary: 0,
+    item_climbing: 0,
+    item_arcane: 0,
+    item_documents: 0,
+    item_subterfuge: 0,
+    item_demolition: 0,
+    item_tinkering: 0,
+    item_torch: 0,
+    item_gadget1: 0,
+    item_gadget2: 0,
+    item_gadget3: 0,
+    item_c1: 0,
+    item_c2: 0,
+    item_c3: 0,
+    item_c4: 0,
+    item_a1: 0,
+    item_a2: 0,
+    item_a3: 0,
+    item_e1: 0,
+    item_e2: 0,
+    item_e3: 0,
+    item_e4: 0,
+    item_e5: 0,
+    item_h1: 0,
+    item_h2: 0,
+    item_h3: 0,
+    item_h4: 0,
+    item_h5: 0,
+    item_sh1: 0,
+    item_sh2: 0,
+    item_sh3: 0,
+    item_sh4: 0,
+    item_sn1: 0,
+    item_sn2: 0,
+    item_sn3: 0,
+    item_sn4: 0,
+  });
 });
 </script>
