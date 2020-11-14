@@ -1,4 +1,4 @@
-<input type="hidden" name="attr_version" value="1.07" />
+<input type="hidden" name="attr_version" value="1.08" />
 <input type="hidden" name="attr_sheet_type" value="choose" />
 <input type="hidden" name="attr_stress_max" value="8" />
 <div class="choose">
@@ -6,6 +6,11 @@
     <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="agent"/>Agent (Character)</label>
     <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="crew"/>Crew Sheet (1 per game)</label>
     <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="role"/>Agency Role</label>
+    <div class="agent_class">
+    <h2>Agent</h2>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="soldier"/>Soldier</label>
+<button style="height:1em;" type="action" name="act_pickclass">Hacker</button>
+    </div>
 </div>
 <div class="main crew">
     <div class="header flex-center section">
@@ -271,6 +276,49 @@
             </fieldset>
         </div>
     </div>
+    <div class="section ci">
+        <h3>Manage Counter-Agents</h3>
+        <p>You begin with two counter-agents and can only have two at a time working for you until you upgrade your network.</p>
+        <div>
+        <fieldset class="repeating_ciagents">
+            <div class="contactcard">
+                <p>Name: <input type="text" name="attr_ci_agent_name" spellcheck="false" /> Detail: <input type="text" name="attr_ci_agent_detail" /> <b>Wounded?</b> <input type="checkbox" name="attr_ci_w1" value="1" /> </p>
+                <p>Assignment:
+                    <label class="ci-choice"><input type="radio" name="attr_ci_assign" value="1" /><span>Reduce Heat</span></label>
+                    <label class="ci-choice"><input type="radio" name="attr_ci_assign" value="2" /><span>Recover</span></label>
+                    <label class="ci-choice"><input type="radio" name="attr_ci_assign" value="3" /><span>Interrogate</span></label>
+                    <label class="ci-choice"><input type="radio" name="attr_ci_assign" value="4" /><span>Blackmail</span></label>
+                    <label class="ci-choice"><input type="radio" name="attr_ci_assign" value="5" /><span>Help</span></label>
+                    <label class="ci-choice"><input type="radio" name="attr_ci_assign" value="6" /><span>Long-term</span></label>
+                </p>
+            </div>
+        </fieldset>
+        </div>
+        <h3>Long-Term Assigments</h3>
+        <div class="ci_ltp">
+            <p>Create and assign counter-agents to long-term assigments. *Augment Mission*, *Expand Network*, *Recruit*, *Research Conspiracy*</p>
+        <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Fortune}} {{attr_num=[[?{Dice|0|1|2|3|4|5}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(?{Dice|0|1|2|3|4|5})d6kh1]]}}">Fortune Roll</button>
+        <p>Roll <b>1d</b> for the assignment. Advance the clock according to the results. (1-3: One, and your counter-agent is wounded. 4/5: Two. 6: Three. Critical: Five.) A wounded counter-agent that gets wounded again will die.<p>
+            <fieldset class="repeating_lta">
+                <div class="clockcard">
+                <label class="xp-clear"><input type="radio" name="attr_clock_val" value="0" checked="true" />Clear</label>
+                <div class="clock">
+                    <input type="hidden" name="attr_clock_size" class="size" value="8" />
+                    <input type="radio" name="attr_clock_val" value="8" />
+                    <input type="radio" name="attr_clock_val" value="7" />
+                    <input type="radio" name="attr_clock_val" value="6" />
+                    <input type="radio" name="attr_clock_val" value="5" />
+                    <input type="radio" name="attr_clock_val" value="4" />
+                    <input type="radio" name="attr_clock_val" value="3" />
+                    <input type="radio" name="attr_clock_val" value="2" />
+                    <input type="radio" name="attr_clock_val" value="1" />
+                </div>
+                <input type="text" name="attr_clock_name" class="clock-lbl" />
+                </div>
+            </fieldset>
+        </div>
+
+    </div>
     <div class="misc section">
       <label>Notes</label>
       <textarea name="attr_notes"></textarea>
@@ -406,8 +454,17 @@
         <li><label><input type="checkbox" name="attr_power_h3" value="1" />  Analyst</label> &mdash; During downtime, you get two ticks to distribute among any long term project clocks that involve investigation or learning a new program or design plan.</li>
         <li><label><input type="checkbox" name="attr_power_h4" value="1" />  Digital ward</label> &mdash; When you Wreck a computer or network, ruining it for any other use, it becomes either anathema or enticing to computer viruses and other hackers.</li>
         <li><label><input type="checkbox" name="attr_power_h5" value="1" />  White noise generator</label> &mdash; You may interfere with surveillance tech, becoming shadowy and insubstantial on all recordings for a few moments. Take 2 stress when you activate this ability, plus one stress for each extra feature. <i>It lasts for a few minutes rather than moments — you are invisible rather than shadowy — it affects human senses as well</i></li>
-        <li><label><input type="checkbox" name="attr_power_h6" value="1" />  Multitasker</label> &mdash; You can push yourself to do one of the following: control a small group of rigged machines as easily as one — perform non-VR actions while in VR without disconnecting.</li>
+        <li><label><input type="checkbox" name="attr_power_h6" value="1" />  Multitasker</label> &mdash; You can push yourself to do one of the following: <i>control a small group of rigged machines as easily as one — perform non-VR actions while in VR without disconnecting.</i></li>
         <li><label><input type="checkbox" name="attr_power_h7" value="1" />  Search Protocol</label> &mdash; You have access to the best tech expertise. Take +1d to gather information about technology by any means.</li>
+</ul>
+<ul class="soldier">
+        <li><label><input type="checkbox" name="attr_power_so1" value="1" />  Battleborn</label> &mdash; You may expend your special armor to reduce harm from an attack in combat or to push yourself during a fight.</li>
+        <li><label><input type="checkbox" name="attr_power_so2" value="1" />  Bodyguard</label> &mdash; When you protect a teammate, take +1d to your resistance roll. When you gather info to anticipate possible threats in the current situation, you get +1 effect.</li>
+        <li><label><input type="checkbox" name="attr_power_so3" value="1" />  Leader</label> &mdash; When you Command a cohort in combat, they continue to fight when they would otherwise break (they’re not taken out when they suffer level 3 harm). They gain +1 effect and 1 armor.</li>
+        <li><label><input type="checkbox" name="attr_power_so4" value="1" />  Mule</label> &mdash; Your load limits are higher. Light: 5. Normal: 7. Heavy: 8.</li>
+        <li><label><input type="checkbox" name="attr_power_so5" value="1" />  Not to be trifled with</label> &mdash; You can push yourself to do one of the following: <i>perform a feat of physical force that verges on the superhuman—engage a small gang on equal footing in close combat.</i></li>
+        <li><label><input type="checkbox" name="attr_power_so6" value="1" />  Savage</label> &mdash; When you unleash physical violence, it’s especially frightening. When you Command a frightened target, take +1d.</li>
+        <li><label><input type="checkbox" name="attr_power_so7" value="1" />  Vigourous</label> &mdash; You recover from harm faster. Permanently fill in one of your healing clock segments. Take +1d to healing treatment rolls.</li>
 </ul>
       <fieldset class="repeating_power">
           <textarea name="attr_power" type="text"></textarea>
@@ -474,6 +531,12 @@
         <li> <label><input type="checkbox" name="attr_item_h3" value="2" /> TEMPEST monitor [2 load]</label></li>
         <li> <label><input type="checkbox" name="attr_item_h4" value="-1" /> <i>Custom app</i></label></li>
         <li> <label><input type="checkbox" name="attr_item_h5" value="-1" /> <i>Custom app</i></label></li>
+    </ul>
+    <ul class="soldier">
+        <li> <label><input type="checkbox" name="attr_item_so1" value="1" /> Rapid fire weapon</label></li>
+        <li> <label><input type="checkbox" name="attr_item_so2" value="1" /> Foam explosive</label></li>
+        <li> <label><input type="checkbox" name="attr_item_so3" value="1" /> Specialty ammo</label></li>
+        <li> <label><input type="checkbox" name="attr_item_so4" value="-1" /> <i>Night vision optics</i></label></li>
     </ul>
     </div>
         <div class="healing section">

@@ -78,7 +78,7 @@ input[name=attr_class_power][value=Soldier] ~ ul.sheet-soldier {
     display: block;
 }
 
-.sheet-director, .sheet-qm, .sheet-personnel {display: none;}
+.sheet-director, .sheet-qm, .sheet-personnel, .sheet-ci {display: none;}
 input[name=attr_class_role][value=Director] ~ .sheet-director {
     display: block;
 }
@@ -86,6 +86,9 @@ input[name=attr_class_role][value=Quartermaster] ~ .sheet-qm {
     display: block;
 }
 input[name=attr_class_role][value=Personnel] ~ .sheet-personnel {
+    display: block;
+}
+input[name=attr_class_role][value=CounterIntel] ~ .sheet-ci {
     display: block;
 }
 /*----------------- GENERAL CSS ------------------*/
@@ -237,10 +240,10 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1em;
 }
 .sheet-xp-clear.sheet-ib { position:relative;right:0;top:0;display:inline-block;}
-.sheet-xp-clear input, .sheet-btn-choice input {
+.sheet-xp-clear input, .sheet-btn-choice input, .sheet-ci-choice input {
     display:none;
 }
-.sheet-btn-choice {
+.sheet-btn-choice, .sheet-ci-choice {
     border: 1px solid black;
     width: auto;
     padding: 0.25em 0.25em 0;
@@ -249,7 +252,7 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1em;
     display: inline-block;
 }
-.sheet-btn-choice:hover {
+.sheet-btn-choice:hover, .sheet-ci-choice:hover {
     border-color: #EC2127;
     color: #EC2127;
 }
@@ -262,6 +265,10 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1em;
 }
 
+.sheet-ci-choice input[data-attrname="ci_assign"]:checked + span {
+    color: green;
+    text-shadow: 2px 1px 2px rgba(150, 150, 150, 1);
+}
 .sheet-btn-choice input[name="attr_load_max"]:checked + span {
     color: green;
     font-size:1.3em;
