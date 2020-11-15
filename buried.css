@@ -538,3 +538,44 @@ input[type=number]::-webkit-outer-spin-button {
 .sheet-rolltemplate-resist .inlinerollresult.fullfail {
     border: none;
 }
+/*-- roll template: stability --*/
+.sheet-rolltemplate-stability {
+    border: 1px solid black;
+    background-color:white;
+    padding: 0.5em;
+}
+.sheet-rolltemplate-stability h1 {
+    font-size: 130%;
+    line-height: 1em;
+}
+.sheet-rolltemplate-stability h2 {
+    font-size: 120%;
+    border-bottom: 1px solid black;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-variant: small-caps;
+}
+.sheet-rolltemplate-stability .sheet-center {
+    text-align:center;
+}
+.sheet-rolltemplate-stability .inlinerollresult {
+    border: none;
+    background-color: transparent;
+    font-family: 'Fredoka One';
+    font-size: 2em;
+    font-weight: normal;
+}
+.sheet-rolltemplate-stability em .inlinerollresult {
+    font-family: inherit;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.sheet-rolltemplate-stability .inlinerollresult.fullcrit {
+    color: #3FB315;
+    border: none;
+}
+
+.sheet-rolltemplate-stability .inlinerollresult.fullfail {
+    border: none;
+}

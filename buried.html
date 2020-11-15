@@ -9,7 +9,7 @@
     <div class="agent_class">
     <h2>Agent</h2>
         <label class="btn-choice"><input type="radio" name="attr_class" value="soldier"/>Soldier</label>
-<button style="height:1em;" type="action" name="act_pickclass">Hacker</button>
+        <button style="height:1em;" type="action" name="act_pickclass">Hacker</button>
     </div>
 </div>
 <div class="main crew">
@@ -340,6 +340,8 @@
         </span>
         <label class="xp-clear"><input type="radio" name="attr_stress" value="0" checked="true" />Clear Stress</label>
         <button type="roll" value="&amp;{template:action} {{name=@{character_name}}} {{attr=Fortune}} {{attr_num=[[?{Dice|0|1|2|3|4|5}]]}} {{zero=[[2d6kl1]]}} {{dice=[[(?{Dice|0|1|2|3|4|5})d6kh1]]}}">Fortune Roll</button>
+        <button type="roll" value="&amp;{template:stability} {{name=@{character_name}}} {{attr=Stability}} {{attr_num=[[@{stability}]]}} {{zero=[[2d6kl1]]}} {{stress=[[(@{stability})d6kh1]]}}">Stability Check</button>
+        <button name="act_heal" type="action">R &amp; R</button>
     </div>
     <div class="insight section">
         <input type="hidden" name="attr_insight" value="0" />
@@ -753,6 +755,24 @@
 <h3>Gain {{zero}} stress</h3>
 {{/rollLess() attr_num 1}}
 </rolltemplate>
+
+<rolltemplate class="sheet-rolltemplate-stability">
+<h1>{{name}}</h1>
+<h2>{{attr}}</h2>
+{{#rollGreater() attr_num 0}}
+<p><em>Rolling {{attr_num}} dice</em></p>
+<h3>Clear {{stress}} stress</h3>
+{{#rollLess() stress 1}}
+{{#rollGreater() attr_num 1}}
+<p>If critical, REDUCE stress by 1</p>
+{{/rollGreater() attr_num 1}}
+{{/rollLess() stress 1}}
+{{/rollGreater() attr_num 0}}
+{{#rollLess() attr_num 1}}
+<p><em>Rolling 0 dice</em></p>
+<h3>Clear {{zero}} stress</h3>
+{{/rollLess() attr_num 1}}
+</rolltemplate>
 <script type="text/worker">
 on( "change:hunt change:study change:survey change:tinker", function() {
    getAttrs(["hunt", "study", "survey", "tinker"], function(values) {
@@ -772,6 +792,45 @@ on( "change:attune change:command change:consort change:sway", function() {
     setAttrs({resolve: val});
    });
 });
+on( "change:insight change:prowess change:resolve", function() {
+    getAttrs(["insight", "prowess", "resolve"], function (values) {
+        let lowest = Math.min(values.insight, values.prowess, values.resolve);
+        setAttrs({stability: lowest});
+    });
+});
+
+on("clicked:heal", function () {
+    getAttrs(["stress", "clock_val", "clock_size", "harm3", "harm2_1", "harm2_2", "harm1_1", "harm1_2"], function (values) {
+        let stress = Math.max(values.stress - 2, 0);
+        let harm1_1 = values.harm1_1;
+        let harm1_2 = values.harm1_2;
+        let harm2_1 = values.harm2_1;
+        let harm2_2 = values.harm2_2;
+        let harm3 = values.harm3;
+        let has_harm = [harm3, harm2_1, harm2_2, harm1_1, harm1_2].join('') != "";
+
+        // if not wounded, set stress and exit;
+        if (!has_harm) {
+            setAttrs({stress: stress, clock_val: 0});
+            return;
+        }
+        let tick = Number(values["clock_val"]) + 1;
+        if (tick >= values.clock_size)
+        {
+            tick = 0;
+            // move lvl 2 to 1
+            harm1_1 = harm2_1;
+            harm1_2 = harm2_2;
+            // move lvl 3 to 2
+            harm2_1 = harm3;
+            harm2_2 = '';
+            // clear lvl 3
+            harm3 = '';
+        }
+        setAttrs({stress: stress, clock_val: tick, harm1_1: harm1_1, harm1_2: harm1_2, harm3: harm3, harm2_2: harm2_2, harm2_1: harm2_1});
+    });
+});
+
 on( "clicked:clearinv", function() {
   setAttrs( {
     item_pistol1: 0,
@@ -814,6 +873,9 @@ on( "clicked:clearinv", function() {
     item_sn2: 0,
     item_sn3: 0,
     item_sn4: 0,
+    armour_use_heavy: 0,
+    armour_use_special: 0,
+    armour_use_std: 0,
   });
 });
 </script>
