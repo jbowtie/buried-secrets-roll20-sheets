@@ -28,6 +28,17 @@ input[name=attr_sheet_type][value=agent] ~ .sheet-agent {
     display:grid;
 }
 
+.sheet-agent_class, .sheet-role_class, .sheet-crew_class {display:none;}
+input[name=attr_fsheet_type][value=agent] ~ .sheet-agent_class {
+    display:block;
+}
+input[name=attr_fsheet_type][value=role] ~ .sheet-role_class {
+    display:block;
+}
+input[name=attr_fsheet_type][value=crew] ~ .sheet-crew_class {
+    display:block;
+}
+
 input[name=attr_class_items] ~ ul {
     display: none;
 }
@@ -78,7 +89,7 @@ input[name=attr_class_power][value=Soldier] ~ ul.sheet-soldier {
     display: block;
 }
 
-.sheet-director, .sheet-qm, .sheet-personnel, .sheet-ci {display: none;}
+.sheet-director, .sheet-qm, .sheet-personnel, .sheet-ci, .sheet-analyst {display: none;}
 input[name=attr_class_role][value=Director] ~ .sheet-director {
     display: block;
 }
@@ -91,6 +102,10 @@ input[name=attr_class_role][value=Personnel] ~ .sheet-personnel {
 input[name=attr_class_role][value=CounterIntel] ~ .sheet-ci {
     display: block;
 }
+input[name=attr_class_role][value=Analyst] ~ .sheet-analyst {
+    display: block;
+}
+/*----------------- GENERAL CSS ------------------*/
 /*----------------- GENERAL CSS ------------------*/
 
 textarea {
@@ -265,6 +280,10 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 1em;
 }
 
+.sheet-btn-choice input:checked + span {
+    color: green;
+    text-shadow: 2px 1px 2px rgba(150, 150, 150, 1);
+}
 .sheet-ci-choice input[data-attrname="ci_assign"]:checked + span {
     color: green;
     text-shadow: 2px 1px 2px rgba(150, 150, 150, 1);

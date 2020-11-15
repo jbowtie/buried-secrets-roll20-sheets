@@ -1,16 +1,39 @@
-<input type="hidden" name="attr_version" value="1.08" />
+<input type="hidden" name="attr_version" value="1.10" />
 <input type="hidden" name="attr_sheet_type" value="choose" />
 <input type="hidden" name="attr_stress_max" value="8" />
 <div class="choose">
-    <h1>Type of sheet:</h1>
-    <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="agent"/>Agent (Character)</label>
-    <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="crew"/>Crew Sheet (1 per game)</label>
-    <label class="btn-choice"><input type="radio" name="attr_sheet_type" value="role"/>Agency Role</label>
+    <input type="hidden" name="attr_fsheet_type" value="agent" />
+    <h1>Type of sheet</h1>
+    <label class="btn-choice"><input type="radio" name="attr_fsheet_type" value="agent"/><span>Agent (Character)</span></label>
+    <label class="btn-choice"><input type="radio" name="attr_fsheet_type" value="crew"/><span>Crew Sheet (1 per game)</span></label>
+    <label class="btn-choice"><input type="radio" name="attr_fsheet_type" value="role"/><span>Agency Role</span></label>
     <div class="agent_class">
     <h2>Agent</h2>
-        <label class="btn-choice"><input type="radio" name="attr_class" value="soldier"/>Soldier</label>
-        <button style="height:1em;" type="action" name="act_pickclass">Hacker</button>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Adept"/><span>Adept</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Controller"/><span>Controller</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Engineer"/><span>Engineer</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Hacker"/><span>Hacker</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Shadow"/><span>Shadow</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Sniper"/><span>Sniper</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Soldier"/><span>Soldier</span></label>
     </div>
+    <div class="role_class">
+    <h2>Role</h2>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Director"/><span>Director</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Quartermaster"/><span>Quartermaster</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Personnel"/><span>Personnel</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="CounterIntel"/><span>Counter-intel</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Analyst"/><span>Analyst</span></label>
+    </div>
+    <div class="crew_class">
+    <h2>Crew</h2>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Spies"/><span>Spies</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Detectives"/><span>Detectives</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="Minders"/><span>Minders</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="SpecOps"/><span>Special Ops</span></label>
+        <label class="btn-choice"><input type="radio" name="attr_class" value="NightWatch"/><span>Night Watch</span></label>
+    </div>
+    <button style="height:1em;" type="action" name="act_confirmtype">Confirm</button>
 </div>
 <div class="main crew">
     <div class="header flex-center section">
@@ -798,7 +821,22 @@ on( "change:insight change:prowess change:resolve", function() {
         setAttrs({stability: lowest});
     });
 });
-
+on("clicked:confirmtype", function() {
+    getAttrs(["fsheet_type", "class", "character_name"], function (values) {
+        let cls = values["class"];
+        let sheet = values.fsheet_type;
+        let name = values.name;
+        switch(sheet) {
+            case "role":
+                name = cls;
+                break;
+            case "crew":
+                name = `Crew (${cls})`;
+                break;
+        }
+        setAttrs({sheet_type: values.fsheet_type, "character_name": name});
+    });
+});
 on("clicked:heal", function () {
     getAttrs(["stress", "clock_val", "clock_size", "harm3", "harm2_1", "harm2_2", "harm1_1", "harm1_2"], function (values) {
         let stress = Math.max(values.stress - 2, 0);
